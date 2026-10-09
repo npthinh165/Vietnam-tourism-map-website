@@ -1,0 +1,6 @@
+{
+  "name": "Bản đồ Du lịch Việt Nam - Vietnam Travel Map",
+  "description": "Nền tảng tương tác khám phá du lịch Việt Nam với bản đồ nhiệt Heatmap, tra cứu thông tin địa phương đa chiều, Travel Planner tự động, Sổ tay hành trình, Gamification và quản trị UGC.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
