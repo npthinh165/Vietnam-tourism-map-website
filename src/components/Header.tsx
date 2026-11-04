@@ -1,236 +1,307 @@
-import React, { useState } from 'react';
-import { Map, Calendar, BookMarked, ShieldCheck, Award, UserCheck, ChevronDown, Sparkles, FileCode } from 'lucide-react';
-import { User } from '../types';
-import { apiService } from '../services/apiService';
+﻿import { useEffect, useRef, useState } from "react";
+import {
+  BookOpen,
+  CalendarDays,
+  ChevronDown,
+  Compass,
+  LogOut,
+  Map,
+  Users,
+  Bell,
+  Award,
+  UserRound,
+  ShieldCheck,
+} from "lucide-react";
+import type { User } from "../types";
 
-interface HeaderProps {
-  currentTab: 'explore' | 'planner' | 'notebook' | 'admin' | 'architecture';
-  onSelectTab: (tab: 'explore' | 'planner' | 'notebook' | 'admin' | 'architecture') => void;
-  currentUser: User;
-  onUserUpdate: () => void;
+export type AppTab =
+  "explore" | "planner" | "community" | "notebook" | "profile" | "admin";
+const navigation = [
+  { id: "explore", label: "Bản đồ & Khám phá", icon: Compass },
+  { id: "planner", label: "Lịch trình", icon: CalendarDays },
+  { id: "community", label: "Cộng đồng", icon: Users },
+  { id: "notebook", label: "Sổ tay hành trình", icon: BookOpen },
+] as const;
+
+export function Avatar({
+  user,
+  className = "",
+}: {
+  user: User;
+  className?: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  useEffect(() => setFailed(false), [user.avatar]);
+  return (
+    <span
+      className={`flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-teal-50 text-sm font-semibold text-teal-800 ${className}`}
+    >
+      {user.avatar && !failed ? (
+        <img
+          src={user.avatar}
+          alt=""
+          className="size-full object-cover"
+          referrerPolicy="no-referrer"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        user.username.trim().charAt(0).toUpperCase()
+      )}
+    </span>
+  );
 }
 
-export const Header: React.FC<HeaderProps> = ({
+interface HeaderProps {
+  currentTab: AppTab;
+  onSelectTab: (tab: AppTab) => void;
+  currentUser: User;
+  onSignIn: () => void;
+  onSignUp: () => void;
+  onAdminSignIn: () => void;
+  onSignOut: () => void;
+  authLoading?: boolean;
+  unreadCount?: number;
+  onNotifications?: () => void;
+}
+
+export function Header({
   currentTab,
   onSelectTab,
   currentUser,
-  onUserUpdate
-}) => {
-  const [showRoleMenu, setShowRoleMenu] = useState(false);
-
-  const handleSwitchRole = (role: 'admin' | 'user' | 'guest') => {
-    apiService.switchUserRole(role);
-    setShowRoleMenu(false);
-    onUserUpdate();
+  onSignIn,
+  onSignUp,
+  onAdminSignIn,
+  onSignOut,
+  authLoading,
+  unreadCount = 0,
+  onNotifications,
+}: HeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const signedIn = currentUser.role !== "guest";
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOutside = (event: PointerEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) setMenuOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        triggerRef.current?.focus();
+      }
+      if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+      const items = Array.from(
+        menuRef.current?.querySelectorAll<HTMLButtonElement>(
+          '[role="menuitem"]',
+        ) || [],
+      );
+      if (!items.length) return;
+      event.preventDefault();
+      const index = items.indexOf(document.activeElement as HTMLButtonElement);
+      items[
+        (index + (event.key === "ArrowDown" ? 1 : items.length - 1)) %
+          items.length
+      ].focus();
+    };
+    document.addEventListener("pointerdown", closeOutside);
+    document.addEventListener("keydown", onKeyDown);
+    menuRef.current
+      ?.querySelector<HTMLButtonElement>('[role="menuitem"]')
+      ?.focus();
+    return () => {
+      document.removeEventListener("pointerdown", closeOutside);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen]);
+  const navigate = (tab: AppTab) => {
+    setMenuOpen(false);
+    onSelectTab(tab);
   };
-
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-[#D5E3E3] shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          
-          {/* Zone 1: Logo & Brand */}
-          <div className="flex items-center gap-3">
+    <header className="relative z-30 shrink-0 border-b border-slate-200 bg-white">
+      <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+        <button
+          onClick={() => navigate("explore")}
+          className="flex shrink-0 items-center gap-2.5 text-left"
+          aria-label="Bản đồ Du lịch Việt Nam — Trang chủ"
+        >
+          <span className="flex size-10 items-center justify-center rounded-xl bg-teal-700 text-white">
+            <Map size={22} strokeWidth={1.6} />
+          </span>
+          <span className="leading-tight">
+            <span className="block text-base font-bold tracking-tight text-slate-900">
+              Việt Nam <span className="text-brand">ơi!</span>
+            </span>
+            <span className="block text-xs text-slate-500">Bản đồ du lịch</span>
+          </span>
+        </button>
+        <nav
+          aria-label="Điều hướng chính"
+          className="hidden items-center gap-1 lg:flex"
+        >
+          {navigation.map(({ id, label, icon: Icon }) => (
             <button
-              onClick={() => onSelectTab('explore')}
-              className="flex items-center gap-2.5 text-left group transition-transform focus:outline-hidden"
+              key={id}
+              onClick={() => navigate(id)}
+              aria-current={currentTab === id ? "page" : undefined}
+              className={`flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold ${currentTab === id ? "bg-teal-50 text-teal-800" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"}`}
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0F9D8F] to-[#0B5F57] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
-                <Map className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <span className="text-lg font-bold tracking-tight text-[#1F2D3D] flex items-center gap-1.5">
-                  Việt Nam Travel Map
-                  <span className="text-[10px] uppercase font-semibold tracking-wider px-1.5 py-0.5 rounded-sm bg-[#E8F4F3] text-[#0F9D8F] border border-[#A8DCD5]">
-                    Interactive
-                  </span>
-                </span>
-                <p className="text-xs text-[#5B6B7B] hidden sm:block">
-                  Bản đồ nhiệt · Travel Planner · Sổ tay hành trình
-                </p>
-              </div>
+              <Icon size={17} />
+              {label}
             </button>
-          </div>
-
-          {/* Zone 2: Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-            <button
-              onClick={() => onSelectTab('explore')}
-              className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-2 ${
-                currentTab === 'explore'
-                  ? 'bg-[#E8F4F3] text-[#0F9D8F] font-semibold'
-                  : 'text-[#5B6B7B] hover:text-[#1F2D3D] hover:bg-[#F7FAFA]'
-              }`}
-            >
-              <Map className="w-4 h-4 text-[#0F9D8F]" />
-              <span>Khám phá & Bản đồ nhiệt</span>
-            </button>
-
-            <button
-              onClick={() => onSelectTab('planner')}
-              className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-2 ${
-                currentTab === 'planner'
-                  ? 'bg-[#E8F4F3] text-[#0F9D8F] font-semibold'
-                  : 'text-[#5B6B7B] hover:text-[#1F2D3D] hover:bg-[#F7FAFA]'
-              }`}
-            >
-              <Calendar className="w-4 h-4 text-[#0F9D8F]" />
-              <span>Lên lịch trình (Planner)</span>
-            </button>
-
-            <button
-              onClick={() => onSelectTab('notebook')}
-              className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-2 ${
-                currentTab === 'notebook'
-                  ? 'bg-[#E8F4F3] text-[#0F9D8F] font-semibold'
-                  : 'text-[#5B6B7B] hover:text-[#1F2D3D] hover:bg-[#F7FAFA]'
-              }`}
-            >
-              <BookMarked className="w-4 h-4 text-[#0F9D8F]" />
-              <span>Sổ tay & Gamification</span>
-            </button>
-
-            <button
-              onClick={() => onSelectTab('architecture')}
-              className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-2 ${
-                currentTab === 'architecture'
-                  ? 'bg-[#E8F4F3] text-[#0F9D8F] font-semibold'
-                  : 'text-[#5B6B7B] hover:text-[#1F2D3D] hover:bg-[#F7FAFA]'
-              }`}
-            >
-              <FileCode className="w-4 h-4 text-[#5B6B7B]" />
-              <span>Sơ đồ hệ thống</span>
-            </button>
-
-            {currentUser.role === 'admin' && (
+          ))}
+        </nav>
+        <div className="flex items-center gap-2">
+          {signedIn && (
+            <>
               <button
-                onClick={() => onSelectTab('admin')}
-                className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-2 ${
-                  currentTab === 'admin'
-                    ? 'bg-[#E8F4F3] text-[#0F9D8F] font-semibold'
-                    : 'text-[#5B6B7B] hover:text-[#1F2D3D] hover:bg-[#F7FAFA]'
-                }`}
+                onClick={() => navigate("profile")}
+                className="hidden items-center gap-1.5 rounded-full bg-[#fff4d9] px-2.5 py-1.5 text-xs font-bold text-[#805b13] xl:flex"
+                aria-label={`Thành tích: ${currentUser.total_points} điểm`}
               >
-                <ShieldCheck className="w-4 h-4 text-[#FF8A5B]" />
-                <span className="flex items-center gap-1.5">
-                  CMS Quản trị
-                  <span className="w-2 h-2 rounded-full bg-[#FF8A5B] animate-pulse"></span>
-                </span>
+                <Award size={15} />
+                {currentUser.total_points} điểm
               </button>
-            )}
-          </nav>
-
-          {/* Zone 3: User Profile & Role Switcher */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            
-            {/* Gamification Points Capsule */}
-            {currentUser.role !== 'guest' && (
-              <div 
-                onClick={() => onSelectTab('notebook')}
-                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#E8F4F3] border border-[#A8DCD5] cursor-pointer hover:bg-[#D5E3E3]/40 transition-colors"
-                title="Điểm tích lũy hành trình du lịch của bạn"
-              >
-                <Award className="w-4 h-4 text-[#FF8A5B]" />
-                <span className="text-xs font-bold text-[#0B5F57] tabular-nums">
-                  {currentUser.total_points} điểm
-                </span>
-                <span className="text-[11px] text-[#5B6B7B] hidden lg:inline">
-                  · {currentUser.visited_provinces.length} tỉnh đã đi
-                </span>
-              </div>
-            )}
-
-            {/* Role Switcher Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setShowRoleMenu(!showRoleMenu)}
-                className="flex items-center gap-2 p-1.5 sm:px-3 sm:py-1.5 rounded-xl border border-[#D5E3E3] bg-[#F7FAFA] hover:bg-[#E8F4F3] transition-colors focus:outline-hidden"
-              >
-                <div className="w-7 h-7 rounded-full bg-[#0F9D8F] text-white flex items-center justify-center font-bold text-xs uppercase overflow-hidden">
-                  {currentUser.role === 'admin' ? (
-                    <ShieldCheck className="w-4 h-4" />
-                  ) : currentUser.role === 'guest' ? (
-                    <UserCheck className="w-4 h-4" />
-                  ) : (
-                    currentUser.username.charAt(0)
+              {onNotifications && (
+                <button
+                  className="relative rounded-full p-2.5 text-muted hover:bg-paper"
+                  aria-label={`Thông báo, ${unreadCount} chưa đọc`}
+                  onClick={onNotifications}
+                >
+                  <Bell size={19} />
+                  {unreadCount > 0 && (
+                    <span className="absolute right-1 top-1 size-2 rounded-full bg-accent" />
                   )}
-                </div>
-                <div className="text-left hidden sm:block">
-                  <p className="text-xs font-semibold text-[#1F2D3D] leading-tight flex items-center gap-1">
-                    {currentUser.username}
-                  </p>
-                  <p className="text-[11px] text-[#5B6B7B] leading-tight">
-                    {currentUser.role === 'admin' ? 'Quản trị viên (CMS)' : currentUser.role === 'guest' ? 'Khách vãng lai' : currentUser.title}
-                  </p>
-                </div>
-                <ChevronDown className="w-3.5 h-3.5 text-[#5B6B7B]" />
+                </button>
+              )}
+            </>
+          )}
+          {!signedIn ? (
+            <>
+              <button
+                disabled={authLoading}
+                onClick={onAdminSignIn}
+                className="rounded-lg p-2 text-slate-500 hover:bg-slate-100"
+                aria-label="Đăng nhập quản trị viên"
+                title="Đăng nhập quản trị viên"
+              >
+                <ShieldCheck size={19} />
               </button>
-
-              {/* Role switcher menu */}
-              {showRoleMenu && (
-                <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-[#D5E3E3] py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="px-3.5 py-2 border-b border-[#D5E3E3]">
-                    <p className="text-xs font-semibold text-[#1F2D3D]">Chuyển đổi tác nhân thử nghiệm</p>
-                    <p className="text-[11px] text-[#5B6B7B]">Theo sơ đồ Use Case của đề tài</p>
+              <button
+                disabled={authLoading}
+                onClick={onSignIn}
+                className="btn-secondary"
+              >
+                {authLoading ? "Đang kết nối…" : "Đăng nhập"}
+              </button>
+              <button
+                disabled={authLoading}
+                onClick={onSignUp}
+                className="btn-primary hidden sm:inline-flex"
+              >
+                Đăng ký
+              </button>
+            </>
+          ) : (
+            <div
+              ref={menuRef}
+              className="relative"
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node))
+                  setMenuOpen(false);
+              }}
+            >
+              <button
+                ref={triggerRef}
+                onClick={() => setMenuOpen((value) => !value)}
+                aria-haspopup="menu"
+                aria-expanded={menuOpen}
+                aria-controls="account-menu"
+                className="flex items-center gap-2 rounded-lg p-1.5 hover:bg-slate-50"
+                aria-label={`Tài khoản ${currentUser.username}`}
+              >
+                <Avatar user={currentUser} />
+                <span className="hidden max-w-36 truncate text-sm font-medium sm:block">
+                  {currentUser.username}
+                </span>
+                <ChevronDown size={15} className="text-slate-500" />
+              </button>
+              {menuOpen && (
+                <div
+                  id="account-menu"
+                  role="menu"
+                  aria-label="Tài khoản"
+                  className="absolute right-0 top-full mt-2 w-64 rounded-xl border border-slate-200 bg-white p-1.5 shadow-lg"
+                >
+                  <div className="mb-1 border-b border-slate-100 px-3 py-2">
+                    <p className="truncate text-sm font-semibold">
+                      {currentUser.username}
+                    </p>
+                    <p className="truncate text-xs text-slate-500">
+                      {currentUser.email}
+                    </p>
                   </div>
-
                   <button
-                    onClick={() => handleSwitchRole('user')}
-                    className={`w-full px-3.5 py-2 text-left text-xs flex items-center justify-between hover:bg-[#E8F4F3] transition-colors ${
-                      currentUser.role === 'user' ? 'text-[#0F9D8F] font-bold bg-[#E8F4F3]/60' : 'text-[#1F2D3D]'
-                    }`}
+                    role="menuitem"
+                    onClick={() => navigate("notebook")}
+                    className="menu-item"
                   >
-                    <div>
-                      <p className="font-semibold">Khách du lịch (Đã đăng nhập)</p>
-                      <p className="text-[11px] text-[#5B6B7B]">Dùng Sổ tay, Planner, UGC, Gamification</p>
-                    </div>
-                    {currentUser.role === 'user' && <span className="w-2 h-2 rounded-full bg-[#0F9D8F]"></span>}
+                    <BookOpen size={16} />
+                    Sổ tay hành trình
                   </button>
-
                   <button
-                    onClick={() => handleSwitchRole('admin')}
-                    className={`w-full px-3.5 py-2 text-left text-xs flex items-center justify-between hover:bg-[#E8F4F3] transition-colors ${
-                      currentUser.role === 'admin' ? 'text-[#0F9D8F] font-bold bg-[#E8F4F3]/60' : 'text-[#1F2D3D]'
-                    }`}
+                    role="menuitem"
+                    onClick={() => navigate("profile")}
+                    className="menu-item"
                   >
-                    <div>
-                      <p className="font-semibold text-[#1F2D3D]">Quản trị viên (Admin CMS)</p>
-                      <p className="text-[11px] text-[#5B6B7B]">Duyệt UGC review, quản lý tỉnh thành, CMS</p>
-                    </div>
-                    {currentUser.role === 'admin' && <span className="w-2 h-2 rounded-full bg-[#FF8A5B]"></span>}
+                    <UserRound size={16} />
+                    Hồ sơ cá nhân
                   </button>
-
+                  <div className="my-1 border-t border-slate-100" />
+                  {currentUser.role === "admin" && (
+                    <button
+                      role="menuitem"
+                      onClick={() => navigate("admin")}
+                      className="menu-item"
+                    >
+                      <ShieldCheck size={16} />
+                      Trang quản trị
+                    </button>
+                  )}
                   <button
-                    onClick={() => handleSwitchRole('guest')}
-                    className={`w-full px-3.5 py-2 text-left text-xs flex items-center justify-between hover:bg-[#E8F4F3] transition-colors ${
-                      currentUser.role === 'guest' ? 'text-[#0F9D8F] font-bold bg-[#E8F4F3]/60' : 'text-[#1F2D3D]'
-                    }`}
+                    role="menuitem"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onSignOut();
+                    }}
+                    className="menu-item"
                   >
-                    <div>
-                      <p className="font-semibold">Khách vãng lai (Chưa đăng nhập)</p>
-                      <p className="text-[11px] text-[#5B6B7B]">Tra cứu Heatmap, lọc thông tin tỉnh thành</p>
-                    </div>
-                    {currentUser.role === 'guest' && <span className="w-2 h-2 rounded-full bg-[#5B6B7B]"></span>}
+                    <LogOut size={16} />
+                    Đăng xuất
                   </button>
                 </div>
               )}
             </div>
-
-            {/* Mobile Nav Toggle */}
-            <div className="flex md:hidden">
-              <button
-                onClick={() => onSelectTab(currentTab === 'planner' ? 'explore' : 'planner')}
-                className="p-2 rounded-lg bg-[#E8F4F3] text-[#0F9D8F]"
-                title="Menu"
-              >
-                <Calendar className="w-5 h-5" />
-              </button>
-            </div>
-
-          </div>
-
+          )}
         </div>
       </div>
+      <nav
+        aria-label="Điều hướng trên điện thoại"
+        className="grid grid-cols-4 border-t border-slate-100 px-2 lg:hidden"
+      >
+        {navigation.map(({ id, label, icon: Icon }) => (
+          <button
+            key={id}
+            onClick={() => navigate(id)}
+            aria-current={currentTab === id ? "page" : undefined}
+            className={`flex min-h-14 flex-col items-center justify-center gap-1 border-b-2 px-1 py-2 text-[11px] font-medium sm:flex-row sm:gap-2 sm:text-sm ${currentTab === id ? "border-teal-700 text-teal-800" : "border-transparent text-slate-500"}`}
+          >
+            <Icon size={17} />
+            {label}
+          </button>
+        ))}
+      </nav>
     </header>
   );
-};
+}

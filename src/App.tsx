@@ -1,239 +1,374 @@
-import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { VietnamMap } from './components/VietnamMap';
-import { ProvinceDetailModal } from './components/ProvinceDetailModal';
-import { TravelPlanner } from './components/TravelPlanner';
-import { TravelNotebookModal } from './components/TravelNotebookModal';
-import { ReviewModal } from './components/ReviewModal';
-import { LocationReviewsModal } from './components/LocationReviewsModal';
-import { AdminCMSModal } from './components/AdminCMSModal';
-import { ArchitectureView } from './components/ArchitectureView';
-import { Province, LocationItem, User } from './types';
-import { apiService } from './services/apiService';
-import { Map, Calendar, BookMarked, ShieldCheck, Heart, Sparkles, Award } from 'lucide-react';
-
-export function App() {
-  const [currentTab, setCurrentTab] = useState<'explore' | 'planner' | 'notebook' | 'admin' | 'architecture'>('explore');
-  const [currentUser, setCurrentUser] = useState<User>(apiService.getCurrentUser());
-  const [provinces, setProvinces] = useState<Province[]>(apiService.getProvinces());
-
-  // Modal states
-  const [selectedProvince, setSelectedProvince] = useState<Province | null>(null);
-  const [focusedLocation, setFocusedLocation] = useState<LocationItem | null>(null);
-  const [reviewTargetLocation, setReviewTargetLocation] = useState<LocationItem | null>(null);
-  const [showReviewModal, setShowReviewModal] = useState<boolean>(false);
-  const [inspectLocationReviews, setInspectLocationReviews] = useState<LocationItem | null>(null);
-
-  // Sync data
-  const refreshData = () => {
-    setCurrentUser(apiService.getCurrentUser());
-    setProvinces(apiService.getProvinces());
-  };
-
+﻿import { lazy, Suspense, useCallback, useEffect, useState } from "react";
+import { Header, type AppTab } from "./components/Header";
+import Dialog from "./components/ui/Dialog";
+import { catalog, locationFromManaged } from "./services/catalog";
+import type { ManagedPlace } from "../shared/places";
+import { request } from "./services/httpClient";
+import {
+  AuthProvider,
+  SignInDialog,
+  useAuth,
+  type AuthMode,
+} from "./features/auth";
+import type { LocationItem, Province, User } from "./types";
+import { tierFor } from "../shared/travel";
+const AdminDashboard = lazy(() => import("./features/AdminDashboard"));
+const VietnamMap = lazy(() =>
+  import("./components/VietnamMap").then((m) => ({ default: m.VietnamMap })),
+);
+const CommunityFeed = lazy(() =>
+  import("./features/CommunityFeed").then((m) => ({
+    default: m.CommunityFeed,
+  })),
+);
+const ItineraryPlanner = lazy(() =>
+  import("./features/ItineraryPlanner").then((m) => ({
+    default: m.ItineraryPlanner,
+  })),
+);
+const LoyaltyProfile = lazy(() =>
+  import("./features/LoyaltyProfile").then((m) => ({
+    default: m.LoyaltyProfile,
+  })),
+);
+const DestinationDialog = lazy(() =>
+  import("./features/DestinationDialog").then((m) => ({
+    default: m.DestinationDialog,
+  })),
+);
+const allowedTabs: AppTab[] = [
+  "explore",
+  "planner",
+  "community",
+  "notebook",
+  "profile",
+  "admin",
+];
+function initialTab(): AppTab {
+  const tab = new URLSearchParams(window.location.search).get("tab") as AppTab;
+  return allowedTabs.includes(tab) ? tab : "explore";
+}
+function Application() {
+  const { user, loading, error: authError, logout } = useAuth();
+  const [tab, setTab] = useState<AppTab>(initialTab),
+    [auth, setAuth] = useState<AuthMode | null>(null),
+    [notice, setNotice] = useState("");
+  const [provinces] = useState(() => catalog.getProvinces()),
+    [province, setProvince] = useState<Province | null>(null),
+    [location, setLocation] = useState<LocationItem | null>(null),
+    [planProvince, setPlanProvince] = useState("");
+  const [visited, setVisited] = useState<number[]>([]),
+    [ratings, setRatings] = useState<
+      Record<number, { average: number; count: number }>
+    >({});
+  const [dataVersion, setDataVersion] = useState(0);
+  const [locations, setLocations] = useState(() => catalog.getLocations());
+  const [catalogError, setCatalogError] = useState("");
+  const onChanged = useCallback(() => setDataVersion((v) => v + 1), []);
   useEffect(() => {
-    refreshData();
-  }, []);
-
-  const handleSelectProvince = (prov: Province) => {
-    setSelectedProvince(prov);
+    const controller = new AbortController();
+    void request<ManagedPlace[]>("/v1/places", { signal: controller.signal })
+      .then((rows) => {
+        if (controller.signal.aborted) return;
+        const places = rows.map(locationFromManaged);
+        setLocations(places);
+        setLocation((current) =>
+          current
+            ? places.find((p) => p.location_id === current.location_id) || null
+            : null,
+        );
+        setCatalogError("");
+      })
+      .catch(() => {
+        if (!controller.signal.aborted)
+          setCatalogError(
+            "Chưa tải được danh sách điểm đến mới nhất. Đang hiển thị dữ liệu đã có.",
+          );
+      });
+    return () => controller.abort();
+  }, [dataVersion]);
+  useEffect(() => {
+    const controller = new AbortController();
+    void request<typeof ratings>("/v1/places/ratings", {
+      signal: controller.signal,
+    })
+      .then(setRatings)
+      .catch(() => {});
+    return () => controller.abort();
+  }, [dataVersion]);
+  useEffect(() => {
+    setVisited([]);
+    if (!user) return;
+    const controller = new AbortController();
+    void request<{ provinces: number[] }>("/v1/checkins", {
+      signal: controller.signal,
+    })
+      .then((value) => setVisited(value.provinces))
+      .catch(() => {});
+    return () => controller.abort();
+  }, [user?.id, dataVersion]);
+  const selectTab = (next: AppTab) => {
+    setTab(next);
+    setProvince(null);
+    setLocation(null);
+    setNotice("");
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.searchParams.set("tab", next);
+    window.history.replaceState({}, "", url);
   };
-
-  const handleToggleProvinceVisited = (provId: number) => {
-    apiService.markProvinceVisited(provId);
-    refreshData();
+  const headerUser: User = {
+    user_id: 0,
+    auth_id: user?.id,
+    username: user?.name || "Khách",
+    email: user?.email || "",
+    role: user?.role === "ADMIN" ? "admin" : user ? "user" : "guest",
+    total_points: user?.points || 0,
+    avatar: "",
+    title: tierFor(user?.points || 0).name,
+    visited_provinces: visited,
+    visited_locations: [],
+    wishlist_locations: [],
   };
-
-  const handleOpenReviewModal = (location?: LocationItem) => {
-    setReviewTargetLocation(location || null);
-    setShowReviewModal(true);
+  const signIn = () => setAuth("login");
+  const plan = (p: Province) => {
+    setPlanProvince(p.name);
+    selectTab("planner");
   };
-
-  const handleOpenLocationReviews = (loc: LocationItem) => {
-    setInspectLocationReviews(loc);
-  };
-
-  const handleSelectProvinceByName = (name: string) => {
-    const p = provinces.find(prov => prov.name === name);
-    if (p) {
-      setSelectedProvince(p);
-      setCurrentTab('explore');
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#F7FAFA] text-[#1F2D3D] flex flex-col font-sans selection:bg-[#E8F4F3] selection:text-[#0B5F57]">
-      
-      {/* 1. Header Navigation & Role Switcher */}
+    <div className="flex min-h-dvh flex-col">
+      <a
+        href="#main-content"
+        className="sr-only fixed left-3 top-3 z-[2000] rounded-lg bg-white p-3 focus:not-sr-only"
+      >
+        Đến nội dung chính
+      </a>
       <Header
-        currentTab={currentTab}
-        onSelectTab={setCurrentTab}
-        currentUser={currentUser}
-        onUserUpdate={refreshData}
+        currentTab={tab}
+        onSelectTab={selectTab}
+        currentUser={headerUser}
+        authLoading={loading}
+        onSignIn={signIn}
+        onSignUp={() => setAuth("register")}
+        onAdminSignIn={() => setAuth("admin")}
+        onSignOut={() => {
+          void logout()
+            .then(() => {
+              setProvince(null);
+              setLocation(null);
+            })
+            .catch((failure) => setNotice(failure.message));
+        }}
       />
-
-      {/* 2. Main Content Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        
-        {/* TAB 1: KHÁM PHÁ & BẢN ĐỒ NHIỆT (MÀN HÌNH 1) */}
-        {currentTab === 'explore' && (
-          <div className="space-y-6 animate-in fade-in duration-150">
-            {/* Hero Banner with Generated Landscape Photography */}
-            <div className="relative rounded-3xl overflow-hidden shadow-xs border border-[#D5E3E3] bg-[#1F2D3D] text-white">
-              <div className="absolute inset-0">
-                <img
-                  src="/src/assets/images/vietnam_travel_hero_1791335147966.jpg"
-                  alt="Vịnh Hạ Long & Non Nước Việt Nam"
-                  className="w-full h-full object-cover opacity-35"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1F2D3D] via-[#1F2D3D]/80 to-transparent" />
-              </div>
-
-              <div className="relative p-6 sm:p-8 max-w-2xl space-y-3">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0F9D8F] text-white shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Nền Tảng Tương Tác Du Lịch Đa Chiều
-                </span>
-                <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight">
-                  Khám Phá Bản Đồ Du Lịch Việt Nam
-                </h1>
-                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                  Trực quan hóa dữ liệu qua bản đồ nhiệt Heatmap (mật độ khách, GDP, dân số), tra cứu thông tin địa phương 5 chiều (Lịch sử, Địa lý, Đặc sản, Lễ hội, Danh thắng) và tạo lịch trình tự động tối ưu.
-                </p>
-
-                <div className="pt-2 flex flex-wrap gap-3">
-                  <button
-                    onClick={() => setCurrentTab('planner')}
-                    className="px-4 py-2.5 bg-[#0F9D8F] hover:bg-[#0B7C71] text-white text-xs font-bold rounded-xl flex items-center gap-2 transition-colors shadow-xs"
-                  >
-                    <Calendar className="w-4 h-4" />
-                    <span>Lên lịch trình tự động ngay</span>
+      {(notice || authError) && (
+        <p
+          role="status"
+          className="border-b border-slate-200 bg-white px-5 py-3 text-sm"
+        >
+          {notice || authError}
+        </p>
+      )}
+      <main id="main-content" className="min-w-0 flex-1" tabIndex={-1}>
+        {tab === "explore" && (
+          <Suspense
+            fallback={
+              <p role="status" className="p-8 text-center">
+                Đang tải bản đồ…
+              </p>
+            }
+          >
+            <div className="mx-auto max-w-[1600px] p-3 sm:p-5 lg:px-8">
+              {catalogError && (
+                <p role="status" className="mb-3 text-sm text-amber-800">
+                  {catalogError}{" "}
+                  <button className="underline" onClick={onChanged}>
+                    Thử lại
                   </button>
+                </p>
+              )}
+              <VietnamMap
+                locations={locations}
+                provinces={provinces}
+                onSelectProvince={setProvince}
+                selectedProvinceId={province?.province_id}
+                visitedProvinceIds={visited}
+                focusedLocation={location}
+                onPlanProvince={plan}
+                onSelectLocation={setLocation}
+                ratings={ratings}
+              />
+            </div>
+          </Suspense>
+        )}
+        <Suspense
+          fallback={
+            <p role="status" className="p-8 text-center">
+              Đang tải…
+            </p>
+          }
+        >
+          <div key={`${user?.id || "guest"}:${tab}`}>
+            {tab === "admin" &&
+              (loading ? (
+                <p role="status" className="p-8">
+                  Đang kiểm tra tài khoản…
+                </p>
+              ) : user?.role === "ADMIN" ? (
+                <AdminDashboard onPlacesChanged={onChanged} />
+              ) : (
+                <div className="page-shell empty-state">
+                  <h1 className="text-xl font-semibold">Khu vực quản trị</h1>
+                  <p>
+                    {user
+                      ? "Tài khoản hiện tại không có quyền quản trị."
+                      : "Vui lòng đăng nhập bằng tài khoản quản trị viên."}
+                  </p>
                   <button
-                    onClick={() => setCurrentTab('notebook')}
-                    className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-xl border border-white/20 flex items-center gap-2 transition-colors"
+                    className="btn-primary"
+                    onClick={() => setAuth("admin")}
                   >
-                    <BookMarked className="w-4 h-4 text-[#A8DCD5]" />
-                    <span>Sổ tay của bạn ({currentUser.visited_provinces.length} tỉnh đã đi)</span>
+                    Đăng nhập quản trị viên
                   </button>
                 </div>
-              </div>
-            </div>
-
-            {/* MÀN HÌNH 1: BẢN ĐỒ NHIỆT & BỘ LỌC THÔNG MINH */}
-            <VietnamMap
-              provinces={provinces}
-              onSelectProvince={handleSelectProvince}
-              selectedProvinceId={selectedProvince?.province_id}
-              visitedProvinceIds={currentUser.visited_provinces}
-              focusedLocation={focusedLocation}
+              ))}
+            {tab === "community" && <CommunityFeed onSignIn={signIn} />}
+            {(tab === "planner" || tab === "notebook") && (
+              <ItineraryPlanner
+                notebook={tab === "notebook"}
+                province={planProvince}
+                sharedId={
+                  new URLSearchParams(window.location.search).get("plan") ||
+                  undefined
+                }
+                onSignIn={signIn}
+              />
+            )}
+            {tab === "profile" &&
+              (user ? (
+                <LoyaltyProfile />
+              ) : (
+                <div className="page-shell empty-state">
+                  <p>Đăng nhập để xem hạng thành viên và lịch sử tích điểm.</p>
+                  <button className="btn-primary" onClick={signIn}>
+                    Đăng nhập
+                  </button>
+                </div>
+              ))}
+          </div>
+          {location && (
+            <DestinationDialog
+              key={`${location.location_id}:${user?.id || "guest"}`}
+              place={location}
+              onClose={() => setLocation(null)}
+              onSignIn={signIn}
+              onChanged={onChanged}
             />
-          </div>
-        )}
-
-        {/* TAB 2: LÊN LỊCH TRÌNH TRAVEL PLANNER (MÀN HÌNH 3) */}
-        {currentTab === 'planner' && (
-          <div className="animate-in fade-in duration-150">
-            <TravelPlanner
-              provinces={provinces}
-              onSavedToNotebook={refreshData}
-              onOpenNotebook={() => setCurrentTab('notebook')}
-            />
-          </div>
-        )}
-
-        {/* TAB 3: SỔ TAY HÀNH TRÌNH & GAMIFICATION */}
-        {currentTab === 'notebook' && (
-          <div className="animate-in fade-in duration-150">
-            <TravelNotebookModal
-              currentUser={currentUser}
-              onRefreshData={refreshData}
-              onSelectProvinceName={handleSelectProvinceByName}
-            />
-          </div>
-        )}
-
-        {/* TAB 4: CMS ADMIN (MÀN HÌNH 4) */}
-        {currentTab === 'admin' && (
-          <div className="animate-in fade-in duration-150">
-            <AdminCMSModal
-              provinces={provinces}
-              onRefreshData={refreshData}
-              onExitAdmin={() => setCurrentTab('explore')}
-            />
-          </div>
-        )}
-
-        {/* TAB 5: KIẾN TRÚC HỆ THỐNG & SƠ ĐỒ USECASE / HOẠT ĐỘNG */}
-        {currentTab === 'architecture' && (
-          <div className="animate-in fade-in duration-150">
-            <ArchitectureView />
-          </div>
-        )}
-
+          )}
+        </Suspense>
       </main>
-
-      {/* 3. MODAL CHI TIẾT TỈNH THÀNH (MÀN HÌNH 2: TRẢI NGHIỆM ĐA CHIỀU) */}
-      {selectedProvince && (
-        <ProvinceDetailModal
-          province={selectedProvince}
-          onClose={() => setSelectedProvince(null)}
-          onOpenReviewModal={handleOpenReviewModal}
-          onOpenLocationReviews={handleOpenLocationReviews}
-          isProvinceVisited={currentUser.visited_provinces.includes(selectedProvince.province_id)}
-          onToggleProvinceVisited={handleToggleProvinceVisited}
-          onRefreshData={refreshData}
-          onSelectLocationCard={(loc) => setFocusedLocation(loc)}
-        />
-      )}
-
-      {/* 4. MODAL ĐĂNG REVIEW UGC (UGC WORKFLOW) */}
-      {showReviewModal && (
-        <ReviewModal
-          location={reviewTargetLocation}
-          province={selectedProvince}
-          onClose={() => {
-            setShowReviewModal(false);
-            setReviewTargetLocation(null);
-          }}
-          onSuccess={refreshData}
-        />
-      )}
-
-      {/* 5. MODAL XEM CÁC BÀI REVIEW ĐÃ DUYỆT CỦA ĐỊA ĐIỂM */}
-      {inspectLocationReviews && (
-        <LocationReviewsModal
-          location={inspectLocationReviews}
-          onClose={() => setInspectLocationReviews(null)}
-          onOpenAddReview={() => {
-            setReviewTargetLocation(inspectLocationReviews);
-            setShowReviewModal(true);
-          }}
-        />
-      )}
-
-      {/* 6. Footer */}
-      <footer className="bg-white border-t border-[#D5E3E3] py-6 text-xs text-[#5B6B7B] mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-lg bg-[#0F9D8F] text-white flex items-center justify-center font-bold text-xs">
-              V
+      {province && (
+        <Dialog
+          title={province.name}
+          description="Khám phá văn hóa, thiên nhiên và những điểm dừng chân."
+          className="!max-w-3xl"
+          onClose={() => setProvince(null)}
+        >
+          <img
+            src={province.cover_image}
+            alt={`Khám phá ${province.name}`}
+            className="mt-5 h-48 w-full rounded-2xl object-cover"
+          />
+          <section
+            className="mt-5 space-y-4"
+            aria-label={`Giới thiệu ${province.name}`}
+          >
+            <h2 className="text-xl font-semibold">
+              Giới thiệu {province.name}
+            </h2>
+            <p className="whitespace-pre-line text-sm leading-7 text-slate-600">
+              {province.description}
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ["Lịch sử & văn hóa", province.history_brief],
+                ["Địa lý & cảnh quan", province.geography_brief],
+                ["Ẩm thực đặc trưng", province.specialty_dish],
+                ["Lễ hội & trải nghiệm", province.top_festival],
+              ].map(([title, content]) => (
+                <article key={title} className="rounded-xl bg-paper p-4">
+                  <h3 className="font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    {content}
+                  </p>
+                </article>
+              ))}
             </div>
-            <span className="font-bold text-[#1F2D3D]">
-              Bản đồ Du lịch Việt Nam · Vietnam Travel Map Platform
-            </span>
+          </section>
+          <button className="btn-primary my-5" onClick={() => plan(province)}>
+            Lên lịch trình tại đây
+          </button>
+          <div className="space-y-3">
+            <h2 className="font-semibold">Địa điểm nổi bật</h2>
+            {catalogError && (
+              <p role="status" className="text-sm text-amber-800">
+                {catalogError}{" "}
+                <button className="underline" onClick={onChanged}>
+                  Thử lại
+                </button>
+              </p>
+            )}
+            {!locations.some(
+              (place) => place.province_id === province.province_id,
+            ) && (
+              <p className="text-sm text-muted">
+                Chưa có địa điểm được đăng tại tỉnh/thành này.
+              </p>
+            )}
+            {locations
+              .filter((place) => place.province_id === province.province_id)
+              .map((place) => (
+                <button
+                  key={place.location_id}
+                  className="block w-full rounded-xl border border-slate-200 p-4 text-left hover:bg-paper"
+                  onClick={() => {
+                    setLocation(place);
+                    setProvince(null);
+                  }}
+                >
+                  <span className="font-semibold">{place.name}</span>
+                  <span className="mt-1 block text-sm text-muted">
+                    Địa chỉ tham khảo: {place.address}
+                  </span>
+                  <span className="mt-2 block line-clamp-2 text-sm leading-6 text-slate-600">
+                    {place.description}
+                  </span>
+                  <span className="mt-2 block text-sm font-medium text-teal-700">
+                    Đọc giới thiệu →
+                  </span>
+                </button>
+              ))}
           </div>
-
-          <div className="flex items-center gap-4 text-[11px]">
-            <span>Khẳng định chủ quyền: Hoàng Sa & Trường Sa là của Việt Nam</span>
-            <span>·</span>
-            <span>React + Vite · Node.js Core Logic · MySQL Spatial Ready</span>
-          </div>
-        </div>
-      </footer>
-
+        </Dialog>
+      )}
+      {auth && (
+        <SignInDialog
+          key={auth}
+          initialMode={auth}
+          onClose={() => setAuth(null)}
+          onSuccess={(account) => {
+            if (account.role === "ADMIN") selectTab("admin");
+            else if (tab === "admin") selectTab("explore");
+          }}
+        />
+      )}
     </div>
   );
 }
-
+export function App() {
+  return (
+    <AuthProvider>
+      <Application />
+    </AuthProvider>
+  );
+}
 export default App;

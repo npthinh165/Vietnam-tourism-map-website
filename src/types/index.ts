@@ -13,6 +13,7 @@ export interface LocationItem {
   category: LocationCategory;
   season: SeasonType;
   description: string;
+  article?: string;
   lat: number;
   lng: number;
   address: string;
@@ -44,6 +45,7 @@ export interface FestivalItem {
 export interface Province {
   province_id: number;
   name: string;
+  previous_names?: string[];
   slug?: string;
   region: RegionType;
   gdp: number; // Tỷ VNĐ (2023)
@@ -127,6 +129,7 @@ export interface Badge {
 }
 
 export interface User {
+  auth_id?: string;
   user_id: number;
   username: string;
   email: string;

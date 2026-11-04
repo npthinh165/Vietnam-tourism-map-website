@@ -1,0 +1,2150 @@
+{
+  "provinces": [
+    {
+      "id": 2,
+      "name": "Cao Bằng",
+      "slug": "cao-bang",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 2,
+          "name": "Cao Bằng"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Tuyên Quang",
+      "slug": "tuyen-quang",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 1,
+          "name": "Hà Giang"
+        },
+        {
+          "id": 4,
+          "name": "Tuyên Quang"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Lào Cai",
+      "slug": "lao-cai",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 5,
+          "name": "Lào Cai"
+        },
+        {
+          "id": 6,
+          "name": "Yên Bái"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Thái Nguyên",
+      "slug": "thai-nguyen",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 3,
+          "name": "Bắc Kạn"
+        },
+        {
+          "id": 7,
+          "name": "Thái Nguyên"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Lạng Sơn",
+      "slug": "lang-son",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 8,
+          "name": "Lạng Sơn"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Phú Thọ",
+      "slug": "phu-tho",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 10,
+          "name": "Phú Thọ"
+        },
+        {
+          "id": 15,
+          "name": "Hòa Bình"
+        },
+        {
+          "id": 18,
+          "name": "Vĩnh Phúc"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Quảng Ninh",
+      "slug": "quang-ninh",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 11,
+          "name": "Quảng Ninh"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Điện Biên",
+      "slug": "dien-bien",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 12,
+          "name": "Điện Biên"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Lai Châu",
+      "slug": "lai-chau",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 13,
+          "name": "Lai Châu"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Sơn La",
+      "slug": "son-la",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 14,
+          "name": "Sơn La"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Hà Nội",
+      "slug": "ha-noi",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 16,
+          "name": "Hà Nội"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Hải Phòng",
+      "slug": "hai-phong",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 17,
+          "name": "Hải Phòng"
+        },
+        {
+          "id": 20,
+          "name": "Hải Dương"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Bắc Ninh",
+      "slug": "bac-ninh",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 9,
+          "name": "Bắc Giang"
+        },
+        {
+          "id": 19,
+          "name": "Bắc Ninh"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Hưng Yên",
+      "slug": "hung-yen",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 21,
+          "name": "Hưng Yên"
+        },
+        {
+          "id": 22,
+          "name": "Thái Bình"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Ninh Bình",
+      "slug": "ninh-binh",
+      "region": "Bắc",
+      "previous": [
+        {
+          "id": 23,
+          "name": "Hà Nam"
+        },
+        {
+          "id": 24,
+          "name": "Nam Định"
+        },
+        {
+          "id": 25,
+          "name": "Ninh Bình"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Thanh Hóa",
+      "slug": "thanh-hoa",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 26,
+          "name": "Thanh Hóa"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Nghệ An",
+      "slug": "nghe-an",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 27,
+          "name": "Nghệ An"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Hà Tĩnh",
+      "slug": "ha-tinh",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 28,
+          "name": "Hà Tĩnh"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Quảng Trị",
+      "slug": "quang-tri",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 29,
+          "name": "Quảng Bình"
+        },
+        {
+          "id": 30,
+          "name": "Quảng Trị"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Huế",
+      "slug": "hue",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 31,
+          "name": "Thừa Thiên Huế"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Đà Nẵng",
+      "slug": "da-nang",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 32,
+          "name": "Đà Nẵng"
+        },
+        {
+          "id": 33,
+          "name": "Quảng Nam"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Quảng Ngãi",
+      "slug": "quang-ngai",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 34,
+          "name": "Quảng Ngãi"
+        },
+        {
+          "id": 40,
+          "name": "Kon Tum"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Khánh Hòa",
+      "slug": "khanh-hoa",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 37,
+          "name": "Khánh Hòa"
+        },
+        {
+          "id": 38,
+          "name": "Ninh Thuận"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Gia Lai",
+      "slug": "gia-lai",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 35,
+          "name": "Bình Định"
+        },
+        {
+          "id": 41,
+          "name": "Gia Lai"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Đắk Lắk",
+      "slug": "dak-lak",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 36,
+          "name": "Phú Yên"
+        },
+        {
+          "id": 42,
+          "name": "Đắk Lắk"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Lâm Đồng",
+      "slug": "lam-dong",
+      "region": "Trung",
+      "previous": [
+        {
+          "id": 39,
+          "name": "Bình Thuận"
+        },
+        {
+          "id": 43,
+          "name": "Đắk Nông"
+        },
+        {
+          "id": 44,
+          "name": "Lâm Đồng"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Tây Ninh",
+      "slug": "tay-ninh",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 46,
+          "name": "Tây Ninh"
+        },
+        {
+          "id": 51,
+          "name": "Long An"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Đồng Nai",
+      "slug": "dong-nai",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 45,
+          "name": "Bình Phước"
+        },
+        {
+          "id": 48,
+          "name": "Đồng Nai"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "name": "TP. Hồ Chí Minh",
+      "slug": "tp-ho-chi-minh",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 47,
+          "name": "Bình Dương"
+        },
+        {
+          "id": 49,
+          "name": "Bà Rịa - Vũng Tàu"
+        },
+        {
+          "id": 50,
+          "name": "TP. Hồ Chí Minh"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "name": "Vĩnh Long",
+      "slug": "vinh-long",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 53,
+          "name": "Bến Tre"
+        },
+        {
+          "id": 54,
+          "name": "Trà Vinh"
+        },
+        {
+          "id": 55,
+          "name": "Vĩnh Long"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "name": "Đồng Tháp",
+      "slug": "dong-thap",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 52,
+          "name": "Tiền Giang"
+        },
+        {
+          "id": 56,
+          "name": "Đồng Tháp"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "name": "An Giang",
+      "slug": "an-giang",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 57,
+          "name": "An Giang"
+        },
+        {
+          "id": 58,
+          "name": "Kiên Giang"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "name": "Cần Thơ",
+      "slug": "can-tho",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 59,
+          "name": "Cần Thơ"
+        },
+        {
+          "id": 60,
+          "name": "Hậu Giang"
+        },
+        {
+          "id": 61,
+          "name": "Sóc Trăng"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "name": "Cà Mau",
+      "slug": "ca-mau",
+      "region": "Nam",
+      "previous": [
+        {
+          "id": 62,
+          "name": "Bạc Liêu"
+        },
+        {
+          "id": 63,
+          "name": "Cà Mau"
+        }
+      ]
+    }
+  ],
+  "places": [
+    {
+      "location_id": 101,
+      "province_id": 4,
+      "name": "Cột Cờ Lũng Cú",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Điểm cực Bắc thiêng liêng của Tổ quốc trên đỉnh núi Rồng.",
+      "lat": 23.36,
+      "lng": 105.3197,
+      "address": "Lũng Cú, Đồng Văn, Hà Giang",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1420,
+      "highlight_tag": "Cực Bắc Tổ quốc"
+    },
+    {
+      "location_id": 201,
+      "province_id": 2,
+      "name": "Thác Bản Giốc",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Thác nước tự nhiên hùng vĩ và đẹp nhất Đông Nam Á biên giới Việt - Trung.",
+      "lat": 22.8542,
+      "lng": 106.7236,
+      "address": "Đàm Thủy, Trùng Khánh, Cao Bằng",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1680,
+      "highlight_tag": "Kỳ quan thiên nhiên"
+    },
+    {
+      "location_id": 301,
+      "province_id": 7,
+      "name": "Hồ Ba Bể",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Một trong 20 hồ nước ngọt tự nhiên trên núi lớn nhất thế giới.",
+      "lat": 22.4089,
+      "lng": 105.6178,
+      "address": "Nam Mẫu, Ba Bể, Bắc Kạn",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 890
+    },
+    {
+      "location_id": 401,
+      "province_id": 4,
+      "name": "Khu Di tích Quốc gia Đặc biệt Tân Trào",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Thủ đô Kháng chiến Tân Trào - nơi diễn ra Quốc dân Đại hội năm 1945.",
+      "lat": 21.8028,
+      "lng": 105.2917,
+      "address": "Tân Trào, Sơn Dương, Tuyên Quang",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 760
+    },
+    {
+      "location_id": 501,
+      "province_id": 5,
+      "name": "Đỉnh Fansipan - Nóc Nhà Đông Dương",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Đỉnh núi cao nhất Việt Nam 3.143m với quần thể tâm linh kỳ vĩ trên mây.",
+      "lat": 22.3033,
+      "lng": 103.7753,
+      "address": "Thị xã Sa Pa, Lào Cai",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 3800,
+      "highlight_tag": "Nóc nhà Đông Dương"
+    },
+    {
+      "location_id": 502,
+      "province_id": 5,
+      "name": "Bản Cát Cát Sa Pa",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Bản làng cổ của người H’Mông với guồng nước, suối Hoa và nghề dệt thổ cẩm.",
+      "lat": 22.3278,
+      "lng": 103.8344,
+      "address": "San Sả Hồ, Sa Pa, Lào Cai",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 2450
+    },
+    {
+      "location_id": 503,
+      "province_id": 5,
+      "name": "Thắng Cố Ngựa A Quỳnh Sa Pa",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "Winter",
+      "description": "Nồi thắng cố ngựa truyền thống nấu với thảo quả, quế hồi thơm nồng bên bếp than hồng.",
+      "lat": 22.3361,
+      "lng": 103.8439,
+      "address": "15 Thạch Sơn, Sa Pa, Lào Cai",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.6,
+      "review_count": 1320,
+      "highlight_tag": "Ẩm thực Tây Bắc"
+    },
+    {
+      "location_id": 504,
+      "province_id": 5,
+      "name": "Nhà Thờ Đá Cổ Sa Pa",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Công trình kiến trúc Gothic Pháp cổ xây bằng đá đẽo từ năm 1895.",
+      "lat": 22.3356,
+      "lng": 103.8428,
+      "address": "Trung tâm Sa Pa, Lào Cai",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 2100
+    },
+    {
+      "location_id": 601,
+      "province_id": 5,
+      "name": "Ruộng Bậc Thang Mù Cang Chải",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Tuyệt tác ruộng bậc thang vàng óng mùa lúa chín di tích quốc gia đặc biệt.",
+      "lat": 21.8542,
+      "lng": 104.0867,
+      "address": "Mù Cang Chải, Yên Bái",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1950,
+      "highlight_tag": "Mùa vàng Tây Bắc"
+    },
+    {
+      "location_id": 701,
+      "province_id": 7,
+      "name": "Không Gian Văn Hóa Trà Tân Cương",
+      "category": "Food",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Vùng chè tiến vua nổi tiếng nhất Việt Nam với hương thơm cốm non đệ nhất trà.",
+      "lat": 21.5647,
+      "lng": 105.7725,
+      "address": "Xã Tân Cương, TP. Thái Nguyên",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 850
+    },
+    {
+      "location_id": 801,
+      "province_id": 8,
+      "name": "Động Tam Thanh & Tượng Nàng Tô Thị",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Di tích danh thắng nổi tiếng trong ca dao gắn liền hình tượng thủy chung son sắt.",
+      "lat": 21.8522,
+      "lng": 106.7533,
+      "address": "Phường Tam Thanh, TP. Lạng Sơn",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.6,
+      "review_count": 920
+    },
+    {
+      "location_id": 901,
+      "province_id": 19,
+      "name": "Chùa Vĩnh Nghiêm",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Nơi lưu giữ mộc bản kinh Phật - Di sản tư liệu thế giới thuộc khu vực châu Á - TBD.",
+      "lat": 21.2181,
+      "lng": 106.3194,
+      "address": "Trí Yên, Yên Dũng, Bắc Giang",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 730
+    },
+    {
+      "location_id": 1001,
+      "province_id": 10,
+      "name": "Khu Di Tích Lịch Sử Đền Hùng",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Nơi cội nguồn dân tộc, thờ phụng các vua Hùng dựng nước Văn Lang.",
+      "lat": 21.3703,
+      "lng": 105.3267,
+      "address": "Hy Cương, Việt Trì, Phú Thọ",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 3100,
+      "highlight_tag": "Cội nguồn Dân tộc"
+    },
+    {
+      "location_id": 1101,
+      "province_id": 11,
+      "name": "Vịnh Hạ Long & Động Thiên Cung",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Di sản thiên nhiên thế giới UNESCO với hàng nghìn đảo đá vôi nhô lên từ làn nước ngọc bích.",
+      "lat": 20.9101,
+      "lng": 107.0189,
+      "address": "TP. Hạ Long, Quảng Ninh",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 4800,
+      "highlight_tag": "Kỳ quan Thế giới"
+    },
+    {
+      "location_id": 1102,
+      "province_id": 11,
+      "name": "Danh Sơn Yên Tử & Chùa Đồng",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Cái nôi của Thiền phái Trúc Lâm do Phật hoàng Trần Nhân Tông sáng lập.",
+      "lat": 21.1578,
+      "lng": 106.7211,
+      "address": "Thượng Yên Công, Uông Bí, Quảng Ninh",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 2600
+    },
+    {
+      "location_id": 1103,
+      "province_id": 11,
+      "name": "Chả Mực Thoan Giã Tay Hạ Long",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Mực mai tươi sống giã tay giòn sần sật chiên vàng ruộm thơm nức mũi.",
+      "lat": 20.9525,
+      "lng": 107.0789,
+      "address": "Kiot 36-37 Chợ Hạ Long 1, Quảng Ninh",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 1720,
+      "highlight_tag": "Đặc sản số 1"
+    },
+    {
+      "location_id": 1104,
+      "province_id": 11,
+      "name": "Bảo Tàng Quảng Ninh",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Khối kiến trúc kính đen huyền bí lấy cảm hứng từ than đá và vịnh biển.",
+      "lat": 20.9497,
+      "lng": 107.0986,
+      "address": "Trần Quốc Nghiễn, Hạ Long, Quảng Ninh",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 2200
+    },
+    {
+      "location_id": 1201,
+      "province_id": 12,
+      "name": "Di Tích Đồi A1 & Bảo Tàng Điện Biên Phủ",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Điểm cao cứ điểm quyết định chiến thắng Điện Biên Phủ lừng lẫy năm châu.",
+      "lat": 21.3856,
+      "lng": 103.0183,
+      "address": "TP. Điện Biên Phủ, Điện Biên",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1350
+    },
+    {
+      "location_id": 1301,
+      "province_id": 13,
+      "name": "Đèo Ô Quy Hồ & Cầu Kính Rồng Mây",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Tứ đại đỉnh đèo hiểm trở bậc nhất Việt Nam nối liền hai tỉnh Lai Châu và Lào Cai.",
+      "lat": 22.3556,
+      "lng": 103.7667,
+      "address": "Tam Đường, Lai Châu",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1820
+    },
+    {
+      "location_id": 1401,
+      "province_id": 14,
+      "name": "Đồi Chè Trái Tim Mộc Châu",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Đồi chè ô long xanh ngút ngàn uốn lượn hình trái tim lãng mạn.",
+      "lat": 20.8456,
+      "lng": 104.6542,
+      "address": "Thị trấn Nông trường Mộc Châu, Sơn La",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 1460
+    },
+    {
+      "location_id": 1501,
+      "province_id": 10,
+      "name": "Bản Lác Mai Châu",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Thung lũng thanh bình của người Thái trắng với nhà sàn gỗ và cánh đồng lúa xanh mướt.",
+      "lat": 20.6583,
+      "lng": 105.0767,
+      "address": "Mai Châu, Hòa Bình",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 1540
+    },
+    {
+      "location_id": 1601,
+      "province_id": 16,
+      "name": "Hồ Hoàn Kiếm & Đền Ngọc Sơn",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Trái tim thủ đô nghìn năm văn hiến gắn liền truyền thuyết vua Lê Lợi trả gươm báu.",
+      "lat": 21.0307,
+      "lng": 105.8524,
+      "address": "Đinh Tiên Hoàng, Hoàn Kiếm, Hà Nội",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 4200,
+      "highlight_tag": "Biểu tượng thủ đô",
+      "article": "Giữa nhịp sống của Hà Nội, Hồ Hoàn Kiếm là một khoảng không gian để chậm lại và cảm nhận thành phố. Câu chuyện vua Lê Lợi trả gươm gắn cảnh quan mặt hồ với ký ức văn hóa của Thăng Long – Hà Nội.\n\nĐi bộ quanh hồ, quan sát những sinh hoạt thường ngày và tìm hiểu câu chuyện về đền Ngọc Sơn là cách tiếp cận nhẹ nhàng với điểm đến này. Vẻ đẹp không chỉ nằm ở một tấm ảnh lưu niệm, mà còn ở sự đan xen giữa không gian di tích và cuộc sống đô thị."
+    },
+    {
+      "location_id": 1602,
+      "province_id": 16,
+      "name": "Văn Miếu - Quốc Tử Giám",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Trường đại học đầu tiên của Việt Nam thành lập năm 1076 thời vua Lý Nhân Tông.",
+      "lat": 21.0275,
+      "lng": 105.8355,
+      "address": "58 Quốc Tử Giám, Đống Đa, Hà Nội",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 2800,
+      "article": "Văn Miếu – Quốc Tử Giám là một điểm dừng chân để tìm hiểu truyền thống hiếu học và lịch sử giáo dục Việt Nam. Không gian di tích gợi mở câu chuyện về việc học, thi cử và sự trân trọng dành cho tri thức qua nhiều thế hệ.\n\nKhi khám phá, có thể dành thời gian đọc các bảng giới thiệu và quan sát chi tiết kiến trúc thay vì chỉ đi qua những vị trí chụp ảnh. Giữ sự yên tĩnh và tôn trọng hiện vật giúp mỗi chuyến tham quan trở thành một trải nghiệm văn hóa ý nghĩa."
+    },
+    {
+      "location_id": 1603,
+      "province_id": 16,
+      "name": "Phở Bát Đàn Gia Truyền",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Phở bò tái nạm gia truyền hơn 70 năm, nước dùng ngọt thanh tủy xương bò thơm nồng quế hồi.",
+      "lat": 21.034,
+      "lng": 105.8475,
+      "address": "49 Bát Đàn, Hoàn Kiếm, Hà Nội",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 1450,
+      "highlight_tag": "Michelin Selected"
+    },
+    {
+      "location_id": 1604,
+      "province_id": 16,
+      "name": "Bún Chả Hương Liên",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Quán bún chả từng đón cựu Tổng thống Obama và đầu bếp Anthony Bourdain ghé thăm.",
+      "lat": 21.018,
+      "lng": 105.854,
+      "address": "24 Lê Văn Hưu, Hai Bà Trưng, Hà Nội",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 1890
+    },
+    {
+      "location_id": 1701,
+      "province_id": 17,
+      "name": "Quần Đảo Cát Bà & Vịnh Lan Hạ",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Khu dự trữ sinh quyển thế giới với hàng trăm bãi tắm tự nhiên và làng chài nổi Cái Bèo.",
+      "lat": 20.7258,
+      "lng": 107.05,
+      "address": "Cát Hải, Hải Phòng",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 3100,
+      "highlight_tag": "Thiên đường biển đảo"
+    },
+    {
+      "location_id": 1702,
+      "province_id": 17,
+      "name": "Bánh Đa Cua Bà Cụ",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Bánh đa đỏ dẻo dai chan nước cua đồng béo ngậy ăn kèm chả lá lốt và chả cá thu.",
+      "lat": 20.8572,
+      "lng": 106.6853,
+      "address": "179 Cầu Đất, Ngô Quyền, Hải Phòng",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 1420,
+      "highlight_tag": "Food Tour Hải Phòng"
+    },
+    {
+      "location_id": 1703,
+      "province_id": 17,
+      "name": "Bãi Biển Đồ Sơn",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Bán đảo du lịch biển nổi tiếng miền Bắc với rừng thông reo và biệt điện Bảo Đại.",
+      "lat": 20.7061,
+      "lng": 106.7906,
+      "address": "Vạn Hương, Đồ Sơn, Hải Phòng",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.6,
+      "review_count": 1250
+    },
+    {
+      "location_id": 1704,
+      "province_id": 17,
+      "name": "Bánh Mì Cay & Chè Thái Đinh Tiên Hoàng",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Bánh mì que giòn rụm phết pate thơm lừng chấm tương ớt chí chương gia truyền cay nồng.",
+      "lat": 20.8617,
+      "lng": 106.6811,
+      "address": "37 Đinh Tiên Hoàng, Hồng Bàng, Hải Phòng",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 1100
+    },
+    {
+      "location_id": 1801,
+      "province_id": 10,
+      "name": "Thị Trấn Tam Đảo",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Thị trấn nghỉ dưỡng bồng bềnh trong sương mù ở độ cao 900m được mệnh danh là Đà Lạt miền Bắc.",
+      "lat": 21.4589,
+      "lng": 105.6481,
+      "address": "Tam Đảo, Vĩnh Phúc",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 2200
+    },
+    {
+      "location_id": 1901,
+      "province_id": 19,
+      "name": "Chùa Dâu - Tổ Đình Phật Giáo",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Ngôi chùa cổ nhất Việt Nam khởi dựng từ thế kỷ thứ 2 tại thủ phủ Luy Lâu.",
+      "lat": 21.0289,
+      "lng": 106.0567,
+      "address": "Thanh Khương, Thuận Thành, Bắc Ninh",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 980
+    },
+    {
+      "location_id": 2001,
+      "province_id": 17,
+      "name": "Khu Di Tích Côn Sơn - Kiếp Bạc",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Mảnh đất gắn bó với cuộc đời danh nhân văn hóa Nguyễn Trãi và Hưng Đạo Đại vương.",
+      "lat": 21.1444,
+      "lng": 106.4028,
+      "address": "Chí Linh, Hải Dương",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1150
+    },
+    {
+      "location_id": 2101,
+      "province_id": 21,
+      "name": "Khu Di Tích Phố Hiến Cổ",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Thương cảng quốc tế hưng thịnh thế kỷ 17: \"Thứ nhất Kinh Kỳ, thứ nhì Phố Hiến\".",
+      "lat": 20.6528,
+      "lng": 106.0522,
+      "address": "TP. Hưng Yên, Hưng Yên",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.6,
+      "review_count": 670
+    },
+    {
+      "location_id": 2201,
+      "province_id": 21,
+      "name": "Chùa Keo Thái Bình",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Kiệt tác kiến trúc gỗ cổ truyền gần 400 năm tuổi với gác chuông ba tầng mái cong vút.",
+      "lat": 20.3667,
+      "lng": 106.3,
+      "address": "Duy Nhất, Vũ Thư, Thái Bình",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 850
+    },
+    {
+      "location_id": 2301,
+      "province_id": 25,
+      "name": "Quần Thể Danh Thắng Chùa Tam Chúc",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Ngôi chùa lớn bậc nhất thế giới tọa lạc giữa hồ Lục Nhạc và núi Thất Tinh.",
+      "lat": 20.5594,
+      "lng": 105.8286,
+      "address": "Ba Sao, Kim Bảng, Hà Nam",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 2750
+    },
+    {
+      "location_id": 2401,
+      "province_id": 25,
+      "name": "Khu Di Tích Đền Trần Nam Định",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Nơi phát tích và thờ phụng 14 vị vua triều Trần cùng Quốc công Tiết chế Trần Hưng Đạo.",
+      "lat": 20.4464,
+      "lng": 106.1606,
+      "address": "Lộc Vượng, TP. Nam Định",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1650
+    },
+    {
+      "location_id": 2501,
+      "province_id": 25,
+      "name": "Quần Thể Danh Thắng Tràng An",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Di sản Văn hóa và Thiên nhiên Thế giới hỗn hợp đầu tiên tại Đông Nam Á với non nước hữu tình.",
+      "lat": 20.2536,
+      "lng": 105.9083,
+      "address": "Tràng An, Hoa Lư, Ninh Bình",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 4600,
+      "highlight_tag": "Di sản Thế giới",
+      "article": "Tràng An mở ra một bức tranh non nước với núi đá, mặt nước và những khoảng xanh nối tiếp nhau. Cảnh quan là phần trung tâm của trải nghiệm: mỗi khúc chuyển của hành trình đem lại một góc nhìn khác về sự gắn bó giữa thiên nhiên và con người.\n\nMột chuyến khám phá thong thả tạo điều kiện quan sát cảnh vật và tìm hiểu các câu chuyện văn hóa tại điểm đến. Hãy giữ gìn vệ sinh, tuân thủ hướng dẫn tại khu tham quan và dành sự tôn trọng cho không gian chung."
+    },
+    {
+      "location_id": 2502,
+      "province_id": 25,
+      "name": "Hang Múa & Đỉnh Ngọa Long",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "486 bậc đá dẫn lên đỉnh núi nhìn toàn cảnh thung lũng Tam Cốc lúa chín vàng.",
+      "lat": 20.2319,
+      "lng": 105.9381,
+      "address": "Khê Hạ, Ninh Xuân, Hoa Lư, Ninh Bình",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 3200
+    },
+    {
+      "location_id": 2503,
+      "province_id": 25,
+      "name": "Thịt Dê Núi Chính Thư Hoa Lư",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Dê núi nuôi thả ăn lá cây rừng đá vôi thịt ngọt săn chắc nướng tảng thơm lừng chấm tương gừng.",
+      "lat": 20.2644,
+      "lng": 105.9228,
+      "address": "Ninh Xuân, Hoa Lư, Ninh Bình",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 1580,
+      "highlight_tag": "Đặc sản Cố đô"
+    },
+    {
+      "location_id": 2504,
+      "province_id": 25,
+      "name": "Cố Đô Hoa Lư",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Kinh đô đầu tiên của nhà nước phong kiến tập quyền Việt Nam thời Đinh - Tiền Lê.",
+      "lat": 20.2858,
+      "lng": 105.9067,
+      "address": "Trường Yên, Hoa Lư, Ninh Bình",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 2100
+    },
+    {
+      "location_id": 2601,
+      "province_id": 26,
+      "name": "Di Sản Thế Giới Thành Nhà Hồ",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Tòa thành đá độc nhất vô nhị ở Đông Nam Á xây bằng đá phiến nguyên khối năm 1397.",
+      "lat": 20.0767,
+      "lng": 105.6067,
+      "address": "Vĩnh Lộc, Thanh Hóa",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1850,
+      "highlight_tag": "Di sản UNESCO"
+    },
+    {
+      "location_id": 2602,
+      "province_id": 26,
+      "name": "Bãi Biển Sầm Sơn",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Bãi tắm cát vàng thoải dài thoai thoải từ thời người Pháp khai phá nghỉ dưỡng năm 1906.",
+      "lat": 19.7428,
+      "lng": 105.9089,
+      "address": "TP. Sầm Sơn, Thanh Hóa",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.6,
+      "review_count": 3200
+    },
+    {
+      "location_id": 2603,
+      "province_id": 26,
+      "name": "Nem Chua Cây Đa Thanh Hóa",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Nem chua gói lá chuối tiêu xanh giòn sần sật lên men tự nhiên vị chua thanh cay nồng ớt tỏi.",
+      "lat": 19.8056,
+      "lng": 105.7761,
+      "address": "326 Trường Thi, TP. Thanh Hóa",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.9,
+      "review_count": 2100,
+      "highlight_tag": "Đặc sản nức tiếng"
+    },
+    {
+      "location_id": 2604,
+      "province_id": 26,
+      "name": "Khu Bảo Tồn Thiên Nhiên Pù Luông",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Thiên đường sinh thái với những bản làng người Mường, Thái giữa mây ngàn và ruộng bậc thang.",
+      "lat": 20.5061,
+      "lng": 105.1583,
+      "address": "Bá Thước, Thanh Hóa",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1650
+    },
+    {
+      "location_id": 2701,
+      "province_id": 27,
+      "name": "Khu Di Tích Quốc Gia Đặc Biệt Kim Liên",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Quê nội làng Sen và quê ngoại làng Hoàng Trù nơi sinh thành Chủ tịch Hồ Chí Minh.",
+      "lat": 18.6853,
+      "lng": 105.5686,
+      "address": "Nam Đàn, Nghệ An",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 3500,
+      "highlight_tag": "Quê Bác Hồ"
+    },
+    {
+      "location_id": 2801,
+      "province_id": 28,
+      "name": "Khu Di Tích Ngã Ba Đồng Lộc",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Mảnh đất anh hùng ghi dấu sự hy sinh bất tử của 10 nữ thanh niên xung phong.",
+      "lat": 18.3308,
+      "lng": 105.7278,
+      "address": "Can Lộc, Hà Tĩnh",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 2200
+    },
+    {
+      "location_id": 2901,
+      "province_id": 30,
+      "name": "Vườn Quốc Gia Phong Nha - Kẻ Bàng",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Vương quốc hang động thế giới sở hữu động Phong Nha, động Thiên Đường và hang Sơn Đoòng.",
+      "lat": 17.5833,
+      "lng": 106.2833,
+      "address": "Bố Trạch, Quảng Bình",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 4100,
+      "highlight_tag": "Kỳ quan Hang động"
+    },
+    {
+      "location_id": 3001,
+      "province_id": 30,
+      "name": "Di Tích Quốc Gia Đặc Biệt Thành Cổ Quảng Trị",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Mảnh đất linh thiêng ghi dấu cuộc chiến đấu 81 ngày đêm bảo vệ thành cổ mùa hè đỏ lửa 1972.",
+      "lat": 16.7497,
+      "lng": 107.1897,
+      "address": "Thị xã Quảng Trị, Quảng Trị",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1800
+    },
+    {
+      "location_id": 3101,
+      "province_id": 31,
+      "name": "Đại Nội - Hoàng Thành Huế",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Trung tâm quyền lực vương triều nhà Nguyễn với Ngọ Môn, Điện Thái Hòa và Tử Cấm Thành.",
+      "lat": 16.4697,
+      "lng": 107.5794,
+      "address": "Phú Hậu, TP. Huế",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 4500,
+      "highlight_tag": "Cố đô Di sản"
+    },
+    {
+      "location_id": 3102,
+      "province_id": 31,
+      "name": "Chùa Thiên Mụ & Sông Hương",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Ngôi quốc tự cổ kính soi bóng bên dòng sông Hương thơ mộng gắn liền tháp Phước Duyên 7 tầng.",
+      "lat": 16.4528,
+      "lng": 107.545,
+      "address": "Đồi Hà Khê, Kim Long, TP. Huế",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 3200
+    },
+    {
+      "location_id": 3103,
+      "province_id": 31,
+      "name": "Bún Bò Huế Bà Tuyết",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Tô bún bò cay nồng mùi sả mắm ruốc, miếng chả cua ngọt đậm đà, thịt bò bắp hoa giòn sần sật.",
+      "lat": 16.4619,
+      "lng": 107.5936,
+      "address": "47 Nguyễn Công Trứ, TP. Huế",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 1680,
+      "highlight_tag": "Tinh hoa Cố đô"
+    },
+    {
+      "location_id": 3104,
+      "province_id": 31,
+      "name": "Lăng Khải Định (Ứng Lăng)",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Đỉnh cao nghệ thuật ghép sành sứ và pha trộn kiến trúc Đông - Tây độc đáo thời Nguyễn.",
+      "lat": 16.3989,
+      "lng": 107.5908,
+      "address": "Thủy Bằng, Hương Thủy, Thừa Thiên Huế",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 2900
+    },
+    {
+      "location_id": 3201,
+      "province_id": 32,
+      "name": "Cầu Rồng & Cầu Sông Hàn",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Biểu tượng hiện đại của thành phố đáng sống, phun lửa và nước tối cuối tuần.",
+      "lat": 16.0612,
+      "lng": 108.2272,
+      "address": "Nguyễn Văn Linh, Hải Châu, Đà Nẵng",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 3800,
+      "highlight_tag": "Check-in đêm",
+      "article": "Cầu Rồng và Cầu Sông Hàn là những hình ảnh quen thuộc trong câu chuyện về Đà Nẵng hiện đại. Những cây cầu vừa nối các không gian đô thị, vừa góp phần tạo nên diện mạo riêng của thành phố bên sông.\n\nCó thể cảm nhận điểm đến qua một cuộc dạo bộ ven sông, quan sát nhịp giao thông và sự thay đổi của cảnh quan khi thành phố lên đèn. Nếu muốn xem chương trình biểu diễn hoặc tham gia sự kiện, hãy kiểm tra thông báo của địa phương cho ngày đi cụ thể."
+    },
+    {
+      "location_id": 3202,
+      "province_id": 32,
+      "name": "Bán Đảo Sơn Trà & Chùa Linh Ứng",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Lá phổi xanh nhô ra biển Đông với tượng Quan Âm cao 67m hướng ra đại dương bình yên.",
+      "lat": 16.1042,
+      "lng": 108.2778,
+      "address": "Sơn Trà, Đà Nẵng",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 2400
+    },
+    {
+      "location_id": 3203,
+      "province_id": 32,
+      "name": "Mì Quảng Ếch Bếp Trang",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Mì Quảng ếch mẹt tre nức tiếng với nước dùng ngọt đậm đà, đậu phộng rang giòn thơm lừng.",
+      "lat": 16.068,
+      "lng": 108.223,
+      "address": "441 Ông Ích Khiêm, Đà Nẵng",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 1450,
+      "highlight_tag": "Đặc sản số 1"
+    },
+    {
+      "location_id": 3204,
+      "province_id": 32,
+      "name": "Bà Nà Hills & Cầu Vàng",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Cây cầu Vàng nâng đỡ bởi đôi bàn tay khổng lồ trên đỉnh núi Chúa mây vờn.",
+      "lat": 15.995,
+      "lng": 107.9867,
+      "address": "Hòa Ninh, Hòa Vang, Đà Nẵng",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 5100
+    },
+    {
+      "location_id": 3301,
+      "province_id": 32,
+      "name": "Đô Thị Cổ Hội An & Chùa Cầu",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Thương cảng quốc tế cổ thế kỷ 16 với những mái ngói rêu phong và đèn lồng lung linh bên sông Hoài.",
+      "lat": 15.8778,
+      "lng": 108.3267,
+      "address": "TP. Hội An, Quảng Nam",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 5400,
+      "highlight_tag": "Di sản Thế giới",
+      "article": "Hội An lưu giữ hình ảnh một đô thị cổ gắn với giao thương và sự gặp gỡ giữa các nền văn hóa. Mái ngói, những con phố nhỏ, đèn lồng và không gian bên sông Hoài tạo nên một nhịp điệu rất riêng; Chùa Cầu là một phần của câu chuyện ấy.\n\nThay vì chỉ ghé các điểm chụp ảnh, hãy dành thời gian quan sát chi tiết những ngôi nhà, tìm hiểu câu chuyện của phố và khám phá hương vị địa phương. Tôn trọng sinh hoạt của cư dân cũng là một cách giữ gìn sức sống của di sản."
+    },
+    {
+      "location_id": 3302,
+      "province_id": 32,
+      "name": "Thánh Địa Mỹ Sơn",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Quần thể tháp Chăm-pa cổ kính giữa thung lũng bí ẩn linh thiêng ngàn năm.",
+      "lat": 15.7981,
+      "lng": 108.1239,
+      "address": "Duy Phú, Duy Xuyên, Quảng Nam",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 2200
+    },
+    {
+      "location_id": 3303,
+      "province_id": 32,
+      "name": "Cao Lầu Thanh Hội An",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Sợi cao lầu làm từ gạo ngâm nước tro cù lao Chàm, ăn cùng thịt xíu xắt mỏng giòn bì.",
+      "lat": 15.8794,
+      "lng": 108.3325,
+      "address": "26 Thái Phiên, Minh An, Hội An, Quảng Nam",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 1750,
+      "highlight_tag": "Hương vị Hội An"
+    },
+    {
+      "location_id": 3304,
+      "province_id": 32,
+      "name": "Cơm Gà Bà Buội",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Cơm vàng ươm nấu nước luộc gà béo ngậy cùng thịt gà ta xé phay trộn rau răm chua ngọt.",
+      "lat": 15.8789,
+      "lng": 108.3308,
+      "address": "22 Phan Châu Trinh, Hội An, Quảng Nam",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 1980
+    },
+    {
+      "location_id": 3401,
+      "province_id": 34,
+      "name": "Đảo Núi Lửa Lý Sơn",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Hòn đảo ngọc hình thành từ núi lửa hàng triệu năm, quê hương Hải đội Hoàng Sa.",
+      "lat": 15.3789,
+      "lng": 109.1175,
+      "address": "Huyện đảo Lý Sơn, Quảng Ngãi",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 2450,
+      "highlight_tag": "Đảo ngọc Tiền tiêu"
+    },
+    {
+      "location_id": 3501,
+      "province_id": 41,
+      "name": "Thắng Cảnh Eo Gió & Kỳ Co",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Eo biển hút gió đẹp ngỡ ngàng cùng bãi biển Kỳ Co trong vắt màu ngọc bích.",
+      "lat": 13.9214,
+      "lng": 109.2889,
+      "address": "Nhơn Lý, TP. Quy Nhơn, Bình Định",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 3100
+    },
+    {
+      "location_id": 3601,
+      "province_id": 42,
+      "name": "Thắng Cảnh Gành Đá Đĩa",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Kiệt tác địa chất tự nhiên với hàng vạn cột đá bazan hình lục giác xếp lớp đều tăm tắp.",
+      "lat": 13.3517,
+      "lng": 109.2961,
+      "address": "An Ninh Đông, Tuy An, Phú Yên",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 2600,
+      "highlight_tag": "Kỳ quan Bazan"
+    },
+    {
+      "location_id": 3701,
+      "province_id": 37,
+      "name": "Tháp Bà Ponagar Nha Trang",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Quần thể đền tháp Chăm-pa cổ kính xây từ thế kỷ 8 trên đồi Cù Lao nhìn ra cửa biển Cái.",
+      "lat": 12.2656,
+      "lng": 109.1958,
+      "address": "2 Tháng 4, Vĩnh Phước, Nha Trang, Khánh Hòa",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 3800,
+      "highlight_tag": "Di sản Chăm-pa"
+    },
+    {
+      "location_id": 3702,
+      "province_id": 37,
+      "name": "Vịnh Nha Trang & Đảo Hòn Mun",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Summer",
+      "description": "Khu bảo tồn biển đầu tiên của Việt Nam với rạn san hô lộng lẫy và nước biển trong vắt.",
+      "lat": 12.1694,
+      "lng": 109.3039,
+      "address": "Vịnh Nha Trang, Khánh Hòa",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 4200
+    },
+    {
+      "location_id": 3703,
+      "province_id": 37,
+      "name": "Nem Nướng Đặng Văn Quyên",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Nem nướng Ninh Hòa thơm lừng ăn kèm bánh tráng chiên giòn rụm và nước chấm tương nếp béo ngậy.",
+      "lat": 12.2533,
+      "lng": 109.1925,
+      "address": "16A Lãn Ông, Xương Huân, Nha Trang, Khánh Hòa",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 2150,
+      "highlight_tag": "Ẩm thực Phố biển"
+    },
+    {
+      "location_id": 3704,
+      "province_id": 37,
+      "name": "Viện Hải Dương Học Nha Trang",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Cơ sở nghiên cứu biển lâu đời nhất Đông Nam Á thành lập năm 1922 với hàng nghìn sinh vật biển.",
+      "lat": 12.2078,
+      "lng": 109.2156,
+      "address": "Số 1 Cầu Đá, Vĩnh Hòa, Nha Trang, Khánh Hòa",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.7,
+      "review_count": 2800
+    },
+    {
+      "location_id": 3801,
+      "province_id": 37,
+      "name": "Tháp Chàm Po Klong Garai",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Cụm tháp Chăm hùng vĩ và nguyên vẹn nhất Việt Nam xây dựng cuối thế kỷ 13.",
+      "lat": 11.6022,
+      "lng": 108.9483,
+      "address": "Đô Vinh, Phan Rang - Tháp Chàm, Ninh Thuận",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1420
+    },
+    {
+      "location_id": 3901,
+      "province_id": 44,
+      "name": "Đồi Cát Bay Mũi Né",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Sa mạc cát đỏ rực thay đổi hình dạng liên tục theo từng cơn gió biển Phan Thiết.",
+      "lat": 10.9481,
+      "lng": 108.2936,
+      "address": "Mũi Né, Phan Thiết, Bình Thuận",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.7,
+      "review_count": 3100
+    },
+    {
+      "location_id": 4001,
+      "province_id": 34,
+      "name": "Nhà Thờ Gỗ Kon Tum",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Tuyệt tác kiến trúc gỗ cà chít hơn 100 năm tuổi kết hợp phong cách Roman và nhà rông Tây Nguyên.",
+      "lat": 14.3467,
+      "lng": 108.0108,
+      "address": "Nguyễn Huệ, Thống Nhất, TP. Kon Tum",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1650
+    },
+    {
+      "location_id": 4101,
+      "province_id": 41,
+      "name": "Biển Hồ T’Nưng Pleiku",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "\"Đôi mắt Pleiku\" hồ nước miệng núi lửa xanh trong ngút ngàn giữa thông reo bạt ngàn.",
+      "lat": 14.0508,
+      "lng": 108.0006,
+      "address": "Xã Biển Hồ, TP. Pleiku, Gia Lai",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1890
+    },
+    {
+      "location_id": 4201,
+      "province_id": 42,
+      "name": "Bảo Tàng Thế Giới Cà Phê Buôn Ma Thuột",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Không gian văn hóa cà phê độc đáo mang hình khối nhà rông cách điệu hiện đại.",
+      "lat": 12.6842,
+      "lng": 108.0414,
+      "address": "Nguyễn Đình Chiểu, Tân Lợi, TP. Buôn Ma Thuột",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 2400
+    },
+    {
+      "location_id": 4301,
+      "province_id": 44,
+      "name": "Hồ Tà Đùng - Vịnh Hạ Long Tây Nguyên",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Autumn",
+      "description": "Hồ nước thủy điện với hơn 40 đảo lớn nhỏ nhấp nhô như tranh thủy mặc giữa đại ngàn.",
+      "lat": 11.9056,
+      "lng": 107.9892,
+      "address": "Đắk Som, Đắk Glong, Đắk Nông",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 1780
+    },
+    {
+      "location_id": 4401,
+      "province_id": 44,
+      "name": "Hồ Xuân Hương & Quảng Trường Lâm Viên",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Trái tim của xứ sở sương mù với biểu tượng nụ hoa atiso khổng lồ và hoa dã quỳ kính màu.",
+      "lat": 11.9392,
+      "lng": 108.4447,
+      "address": "Trần Quốc Toản, Phường 1, TP. Đà Lạt, Lâm Đồng",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 5200,
+      "highlight_tag": "Thành phố Ngàn hoa"
+    },
+    {
+      "location_id": 4402,
+      "province_id": 44,
+      "name": "Đỉnh Núi Langbiang Huyền Thoại",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Nóc nhà Đà Lạt cao 2.167m gắn liền với câu chuyện tình thiên thu của chàng K’lang và nàng H’biang.",
+      "lat": 12.0456,
+      "lng": 108.4358,
+      "address": "Lạc Dương, Lâm Đồng",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 3600
+    },
+    {
+      "location_id": 4403,
+      "province_id": 44,
+      "name": "Lẩu Gà Lá É Tao Ngộ",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "Winter",
+      "description": "Nồi lẩu gà nấm the cay thơm nồng mùi lá é ăn giữa tiết trời se lạnh của cao nguyên Đà Lạt.",
+      "lat": 11.9328,
+      "lng": 108.4497,
+      "address": "05 Đường 3 Tháng 4, Phường 3, Đà Lạt, Lâm Đồng",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 2200,
+      "highlight_tag": "Món ngon Đà Lạt"
+    },
+    {
+      "location_id": 4404,
+      "province_id": 44,
+      "name": "Thung Lũng Tình Yêu",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Khu du lịch sinh thái lãng mạn giữa rừng thông bạt ngàn và hồ Đa Thiện thơ mộng.",
+      "lat": 11.9792,
+      "lng": 108.4503,
+      "address": "Mai Anh Đào, Phường 8, Đà Lạt, Lâm Đồng",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.7,
+      "review_count": 3400
+    },
+    {
+      "location_id": 4501,
+      "province_id": 48,
+      "name": "Vườn Quốc Gia Bù Gia Mập",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Lá phổi xanh của vùng Đông Nam Bộ với hệ sinh thái rừng nhiệt đới nguyên sinh trù phú.",
+      "lat": 12.0167,
+      "lng": 107.1667,
+      "address": "Bù Gia Mập, Bình Phước",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 820
+    },
+    {
+      "location_id": 4601,
+      "province_id": 46,
+      "name": "Quần Thể Danh Thắng Núi Bà Đen",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Nóc nhà Nam Bộ cao 986m linh thiêng sừng sững với tượng Phật Bà Tây Bổ Đà Sơn bằng đồng.",
+      "lat": 11.3761,
+      "lng": 106.1706,
+      "address": "Thạnh Tân, TP. Tây Ninh",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 3900,
+      "highlight_tag": "Nóc nhà Nam Bộ"
+    },
+    {
+      "location_id": 4701,
+      "province_id": 50,
+      "name": "Chùa Bà Thiên Hậu Thủ Dầu Một",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Ngôi chùa linh thiêng của cộng đồng người Hoa với lễ hội rước cộ Bà rực rỡ rằm tháng Giêng.",
+      "lat": 10.9806,
+      "lng": 106.6547,
+      "address": "Phú Cường, TP. Thủ Dầu Một, Bình Dương",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1750
+    },
+    {
+      "location_id": 4801,
+      "province_id": 48,
+      "name": "Vườn Quốc Gia Cát Tiên",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Khu dự trữ sinh quyển thế giới UNESCO với rừng cây đại thụ hàng trăm năm và xem thú đêm.",
+      "lat": 11.4333,
+      "lng": 107.4333,
+      "address": "Tân Phú, Đồng Nai",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 2100
+    },
+    {
+      "location_id": 4901,
+      "province_id": 50,
+      "name": "Tượng Chúa Kytô Vua Bãi Sau",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Bức tượng Chúa dang tay trên đỉnh núi Nhỏ cao 32m nhìn bao quát toàn bộ vịnh biển Vũng Tàu.",
+      "lat": 10.3267,
+      "lng": 107.0847,
+      "address": "Thùy Vân, Phường 2, TP. Vũng Tàu",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 3600
+    },
+    {
+      "location_id": 5001,
+      "province_id": 50,
+      "name": "Nhà Thờ Đức Bà & Bưu Điện Trung Tâm",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Kiệt tác kiến trúc cổ điển Pháp cuối thế kỷ 19 biểu tượng lịch sử trung tâm Sài Gòn.",
+      "lat": 10.7798,
+      "lng": 106.6999,
+      "address": "Công xã Paris, Bến Nghé, Quận 1, TP.HCM",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 5200,
+      "highlight_tag": "Hòn ngọc Viễn Đông"
+    },
+    {
+      "location_id": 5002,
+      "province_id": 50,
+      "name": "Địa Đạo Củ Chi",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Hệ thống hầm ngầm kháng chiến dài hơn 250km được mệnh danh là thành phố dưới lòng đất.",
+      "lat": 11.1432,
+      "lng": 106.463,
+      "address": "Phú Hiệp, Củ Chi, TP.HCM",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 3900
+    },
+    {
+      "location_id": 5003,
+      "province_id": 50,
+      "name": "Cơm Tấm Ba Ghiền",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Sườn cốt lết nướng mật ong khổng lồ đạt chuẩn Michelin Bib Gourmand ăn kèm chả trứng bì giòn.",
+      "lat": 10.7936,
+      "lng": 106.6669,
+      "address": "84 Đặng Văn Ngữ, Phú Nhuận, TP.HCM",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 2850,
+      "highlight_tag": "Michelin Selected"
+    },
+    {
+      "location_id": 5004,
+      "province_id": 50,
+      "name": "Chợ Bến Thành",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Biểu tượng thương mại sầm uất hơn 100 năm tuổi của đô thị Sài Gòn năng động.",
+      "lat": 10.7725,
+      "lng": 106.698,
+      "address": "Lê Lợi, Bến Thành, Quận 1, TP.HCM",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 4600,
+      "article": "Chợ Bến Thành gợi nhắc đến nhịp sống giao thương sôi động của TP. Hồ Chí Minh. Đây là một không gian để quan sát cách hàng hóa, ẩm thực và những cuộc gặp gỡ thường ngày tạo nên nét riêng của đô thị.\n\nMột vòng khám phá khu chợ có thể bắt đầu từ việc quan sát các quầy hàng và tìm hiểu câu chuyện của những món đồ địa phương. Khi mua sắm hoặc ăn uống, trao đổi rõ về giá và phần hàng trước khi lựa chọn sẽ giúp trải nghiệm thoải mái hơn."
+    },
+    {
+      "location_id": 5101,
+      "province_id": 46,
+      "name": "Khu Du Lịch Làng Nổi Tân Lập",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Con đường xuyên rừng tràm bạt ngàn miền sông nước Đồng Tháp Mười hữu tình.",
+      "lat": 10.6694,
+      "lng": 106.0125,
+      "address": "Mộc Hóa, Long An",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 1420
+    },
+    {
+      "location_id": 5201,
+      "province_id": 56,
+      "name": "Chùa Vĩnh Tràng Mỹ Tho",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Ngôi chùa cổ lớn nhất Tiền Giang kết hợp hài hòa kiến trúc Á - Âu lộng lẫy.",
+      "lat": 10.3644,
+      "lng": 106.3756,
+      "address": "Ấp Mỹ An, Mỹ Phong, TP. Mỹ Tho, Tiền Giang",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1850
+    },
+    {
+      "location_id": 5301,
+      "province_id": 55,
+      "name": "Khu Du Lịch Cồn Phụng Đạo Dừa",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Cù lao xanh ngát giữa sông Tiền gắn liền với di tích Đạo Dừa và nghề làm kẹo dừa truyền thống.",
+      "lat": 10.3347,
+      "lng": 106.3386,
+      "address": "Châu Thành, Bến Tre",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 1650
+    },
+    {
+      "location_id": 5401,
+      "province_id": 55,
+      "name": "Quần Thể Ao Bà Om & Chùa Âng",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Hồ nước phẳng lặng cổ thụ hàng trăm năm và ngôi chùa Khmer cổ kính bậc nhất Nam Bộ.",
+      "lat": 9.9467,
+      "lng": 106.3128,
+      "address": "Phường 8, TP. Trà Vinh",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1220
+    },
+    {
+      "location_id": 5501,
+      "province_id": 55,
+      "name": "Miệt Vườn Cù Lao An Bình",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Thiên đường cây trái nhiệt đới trĩu cành bốn mùa được bao bọc bởi sông Cổ Chiên.",
+      "lat": 10.2708,
+      "lng": 105.9861,
+      "address": "Long Hồ, Vĩnh Long",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 1350
+    },
+    {
+      "location_id": 5601,
+      "province_id": 56,
+      "name": "Làng Hoa Sa Đéc",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Thủ phủ hoa cảnh miền Tây hơn 100 năm tuổi rực rỡ sắc màu bên dòng sông Tiền.",
+      "lat": 10.3014,
+      "lng": 105.7483,
+      "address": "Tân Quy Đông, TP. Sa Đéc, Đồng Tháp",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 2750
+    },
+    {
+      "location_id": 5701,
+      "province_id": 57,
+      "name": "Miếu Bà Chúa Xứ Núi Sam Châu Đốc",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "Spring",
+      "description": "Trung tâm hành hương tâm linh nổi tiếng bậc nhất miền Tây Nam Bộ đón hàng triệu khách.",
+      "lat": 10.6728,
+      "lng": 105.1189,
+      "address": "Núi Sam, TP. Châu Đốc, An Giang",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 4200,
+      "highlight_tag": "Hành hương linh thiêng"
+    },
+    {
+      "location_id": 5801,
+      "province_id": 57,
+      "name": "Bãi Sao Phú Quốc",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Bãi biển cát trắng mịn màng như kem cùng hàng dừa nghiêng soi bóng bên làn nước ngọc lam.",
+      "lat": 10.0522,
+      "lng": 104.0322,
+      "address": "An Thới, TP. Phú Quốc, Kiên Giang",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.9,
+      "review_count": 4800,
+      "highlight_tag": "Đảo Ngọc Phú Quốc"
+    },
+    {
+      "location_id": 5802,
+      "province_id": 57,
+      "name": "Grand World Phú Quốc",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Thành phố không ngủ rực rỡ sắc màu Venice bên dòng kênh lãng mạn và show diễn triệu đô.",
+      "lat": 10.3297,
+      "lng": 103.8631,
+      "address": "Gành Dầu, TP. Phú Quốc, Kiên Giang",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 3600
+    },
+    {
+      "location_id": 5803,
+      "province_id": 57,
+      "name": "Bún Quậy Kiến Xây Dương Đông",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Món bún tự quậy chả tôm mực tươi rói nước lèo ngọt lịm tự pha nước chấm theo khẩu vị.",
+      "lat": 10.2189,
+      "lng": 103.9606,
+      "address": "28 Bạch Đằng, Dương Đông, Phú Quốc, Kiên Giang",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.8,
+      "review_count": 2450,
+      "highlight_tag": "Ẩm thực Phú Quốc"
+    },
+    {
+      "location_id": 5804,
+      "province_id": 57,
+      "name": "Làng Chài Cổ Hàm Ninh",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Làng chài nguyên sơ dưới chân núi ngắm bình minh biển tuyệt mỹ và thưởng thức ghẹ Hàm Ninh.",
+      "lat": 10.1783,
+      "lng": 104.0456,
+      "address": "Hàm Ninh, TP. Phú Quốc, Kiên Giang",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.7,
+      "review_count": 1980
+    },
+    {
+      "location_id": 5901,
+      "province_id": 59,
+      "name": "Chợ Nổi Cái Răng",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Di sản văn hóa phi vật thể quốc gia, bức tranh giao thương sông nước miệt vườn lúc rạng đông.",
+      "lat": 10.005,
+      "lng": 105.7481,
+      "address": "Sông Cần Thơ, Cái Răng, TP. Cần Thơ",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 4200,
+      "highlight_tag": "Đặc trưng Sông nước"
+    },
+    {
+      "location_id": 5902,
+      "province_id": 59,
+      "name": "Bến Ninh Kiều & Cầu Đi Bộ Tình Yêu",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Biểu tượng thi vị của Tây Đô nhìn ra dòng sông Hậu hiền hòa lung linh ánh đèn.",
+      "lat": 10.0336,
+      "lng": 105.7878,
+      "address": "Hai Bà Trưng, Tân An, Ninh Kiều, Cần Thơ",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 3600
+    },
+    {
+      "location_id": 5903,
+      "province_id": 59,
+      "name": "Bánh Cống Cô Út Cần Thơ",
+      "category": "Food",
+      "tourism_type": "restaurant",
+      "season": "AllYear",
+      "description": "Chiếc bánh cống vàng ươm nhân đậu xanh thịt băm và tôm tươi nguyên con ăn kèm rau sống tươi mát.",
+      "lat": 10.0308,
+      "lng": 105.7797,
+      "address": "86/38 Lý Tự Trọng, An Cư, Ninh Kiều, Cần Thơ",
+      "image_url": "/src/assets/images/vietnam_culinary_food_1791335176027.jpg",
+      "rating_star": 4.7,
+      "review_count": 1420,
+      "highlight_tag": "Món ngon Tây Đô"
+    },
+    {
+      "location_id": 5904,
+      "province_id": 59,
+      "name": "Nhà Cổ Bình Thủy",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Ngôi nhà cổ 5 gian 2 mái kiến trúc Pháp - Hoa xây dựng từ năm 1870 của dòng họ Dương.",
+      "lat": 10.0767,
+      "lng": 105.7533,
+      "address": "144 Bùi Hữu Nghĩa, Bình Thủy, Cần Thơ",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 2200
+    },
+    {
+      "location_id": 6001,
+      "province_id": 59,
+      "name": "Chợ Nổi Ngã Bảy Phụng Hiệp",
+      "category": "Geography",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Giao điểm của bảy nhánh sông kênh rạch tấp nập thuyền ghe ghe trái cây Nam Bộ.",
+      "lat": 9.8056,
+      "lng": 105.8239,
+      "address": "Ngã Bảy, Hậu Giang",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.6,
+      "review_count": 950
+    },
+    {
+      "location_id": 6101,
+      "province_id": 59,
+      "name": "Chùa Dơi (Chùa Mahatup)",
+      "category": "History",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Ngôi chùa cổ Khmer độc đáo hơn 400 năm nơi cư ngụ của hàng vạn cá thể dơi ngựa.",
+      "lat": 9.5861,
+      "lng": 105.9756,
+      "address": "Văn Ngọc Chính, Phường 3, TP. Sóc Trăng",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.8,
+      "review_count": 1850
+    },
+    {
+      "location_id": 6201,
+      "province_id": 63,
+      "name": "Cánh Đồng Điện Gió Bạc Liêu",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Cánh đồng quạt gió khổng lồ trên biển với cầu đi bộ xuyên biển ngắm hoàng hôn kỳ ảo.",
+      "lat": 9.2417,
+      "lng": 105.8167,
+      "address": "Vĩnh Trạch Đông, TP. Bạc Liêu",
+      "image_url": "/src/assets/images/danang_landmark_1791335159789.jpg",
+      "rating_star": 4.8,
+      "review_count": 2600
+    },
+    {
+      "location_id": 6301,
+      "province_id": 63,
+      "name": "Mốc Tọa Độ Quốc Gia GPS 0001 Đất Mũi",
+      "category": "Landmark",
+      "tourism_type": "attraction",
+      "season": "AllYear",
+      "description": "Cực Nam Tổ quốc nơi \"đất nở ra, rừng biết đi và biển sinh sôi\" với cột cờ Hà Nội tại Đất Mũi.",
+      "lat": 8.6083,
+      "lng": 104.7172,
+      "address": "Đất Mũi, Ngọc Hiển, Cà Mau",
+      "image_url": "/src/assets/images/vietnam_travel_hero_1791335147966.jpg",
+      "rating_star": 4.9,
+      "review_count": 3400,
+      "highlight_tag": "Cực Nam Tổ quốc"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Tier {
+  BRONZE
+  SILVER
+  GOLD
+  DIAMOND
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum RewardEvent {
+  SIGNUP
+  REVIEW
+  ITINERARY
+  CHECKIN
+}
+
+enum Visibility {
+  PRIVATE
+  PUBLIC
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique @db.VarChar(254)
+  name         String   @db.VarChar(80)
+  passwordHash String
+  role         Role     @default(USER)
+  points       Int      @default(0)
+  tier         Tier     @default(BRONZE)
+  createdAt    DateTime @default(now())
+  sessions     Session[]
+  rewards      PointEntry[]
+  quotas       RewardQuota[]
+  posts        Post[]
+  likes        Like[]
+  comments     Comment[]
+  reviews      Review[]
+  checkIns     CheckIn[]
+  itineraries  Itinerary[]
+}
+
+model Session {
+  tokenHash String   @id @db.Char(64)
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model RateBucket {
+  key       String   @id @db.Char(64)
+  count     Int
+  expiresAt DateTime
+  @@index([expiresAt])
+}
+
+model PointEntry {
+  id        String      @id @default(uuid()) @db.Uuid
+  userId    String      @db.Uuid
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event     RewardEvent
+  source    String      @db.VarChar(128)
+  amount    Int
+  createdAt DateTime    @default(now())
+  @@unique([userId, event, source])
+  @@index([userId, createdAt, id])
+}
+
+model RewardQuota {
+  userId String      @db.Uuid
+  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event  RewardEvent
+  day    String      @db.Char(10)
+  count  Int         @default(0)
+  @@id([userId, event, day])
+}
+
+model Place {
+  id         Int       @id @default(autoincrement())
+  provinceId Int
+  name       String
+  lat        Float
+  lng        Float
+  category   String    @default("Landmark") @db.VarChar(20)
+  season     String    @default("AllYear") @db.VarChar(20)
+  address    String    @default("") @db.VarChar(500)
+  description String   @default("") @db.VarChar(3000)
+  article    String    @default("") @db.VarChar(20000)
+  imageUrl   String    @default("") @db.VarChar(2048)
+  version    Int       @default(1)
+  reviews    Review[]
+  checkIns   CheckIn[]
+  @@index([provinceId])
+}
+
+model Review {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  placeId   Int
+  place     Place    @relation(fields: [placeId], references: [id])
+  rating    Int
+  content   String   @db.VarChar(3000)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([userId, placeId])
+  @@index([placeId, createdAt, id])
+}
+
+model CheckIn {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  placeId   Int
+  place     Place    @relation(fields: [placeId], references: [id])
+  day       String   @db.Char(10)
+  createdAt DateTime @default(now())
+  @@unique([userId, placeId, day])
+  @@index([userId, createdAt])
+}
+
+model Post {
+  id        String   @id @default(uuid()) @db.Uuid
+  authorId  String   @db.Uuid
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  content   String   @db.VarChar(5000)
+  imageUrl  String?  @db.VarChar(2048)
+  province  String   @db.VarChar(100)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  likes     Like[]
+  comments  Comment[]
+  @@index([createdAt, id])
+  @@index([authorId])
+}
+
+model Like {
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId String @db.Uuid
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  @@id([userId, postId])
+  @@index([postId])
+}
+
+model Comment {
+  id        String   @id @default(uuid()) @db.Uuid
+  authorId  String   @db.Uuid
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  postId    String   @db.Uuid
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  content   String   @db.VarChar(2000)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([postId, createdAt, id])
+}
+
+model Itinerary {
+  id          String       @id @db.Uuid
+  authorId    String       @db.Uuid
+  author      User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  title       String       @db.VarChar(140)
+  description String       @db.VarChar(5000)
+  province    String       @db.VarChar(100)
+  visibility  Visibility   @default(PRIVATE)
+  version     Int          @default(1)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  days        ItineraryDay[]
+  @@index([authorId, createdAt, id])
+  @@index([visibility, createdAt, id])
+}
+
+model ItineraryDay {
+  id          String       @id @default(uuid()) @db.Uuid
+  itineraryId String       @db.Uuid
+  itinerary   Itinerary    @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+  day         Int
+  title       String       @db.VarChar(120)
+  activities  Activity[]
+  @@unique([itineraryId, day])
+}
+
+model Activity {
+  id        String       @id @default(uuid()) @db.Uuid
+  dayId     String       @db.Uuid
+  day       ItineraryDay @relation(fields: [dayId], references: [id], onDelete: Cascade)
+  position  Int
+  time      String       @db.Char(5)
+  endTime   String       @db.Char(5)
+  title     String       @db.VarChar(160)
+  place     String       @db.VarChar(160)
+  notes     String       @db.VarChar(2000)
+  cost      Int          @default(0)
+  @@unique([dayId, position])
+}

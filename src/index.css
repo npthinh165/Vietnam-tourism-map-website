@@ -1,120 +1,170 @@
-@import "tailwindcss";
-
+﻿@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+@theme {
+  --font-sans: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --color-brand: #176b45;
+  --color-ocean: #087e8b;
+  --color-ink: #25332d;
+  --color-muted: #68746e;
+  --color-paper: #f7f5ef;
+  --color-accent: #d94f3d;
+  --color-reward: #f2b544;
+  --color-teal-700: #176b45;
+  --color-teal-800: #135438;
+  --color-teal-600: #20815a;
+  --color-teal-50: #edf5ee;
+  --color-slate-900: #25332d;
+  --color-slate-800: #2e4036;
+  --color-slate-700: #46584d;
+  --color-slate-600: #5c6a62;
+  --color-slate-500: #68746e;
+  --color-slate-200: #dce3db;
+  --color-slate-100: #edf0ea;
+  --color-slate-50: #f7f8f4;
+}
+:root { --radius-card: 16px; --radius-control: 9px; --shadow-card: 0 4px 18px #25332d08; --space-section: clamp(24px, 4vw, 48px); }
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: #F7FAFA;
-    color: #1F2D3D;
+    margin: 0;
+    background: #f7f5ef;
+    color: #25332d;
+    font-family: var(--font-sans);
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+  :focus-visible {
+    outline: 3px solid #087e8b;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: #ccfbf1;
+    color: #134e4a;
   }
 }
-
-/* Custom scrollbars */
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-teal-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-800;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50;
+  }
+  .field {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-teal-600;
+  }
+  .field-label {
+    @apply mb-2 block text-sm font-medium text-slate-700;
+  }
+  .panel {
+    @apply rounded-2xl border border-slate-200 bg-white;
+    box-shadow: var(--shadow-card);
+  }
+  .menu-item {
+    @apply flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm text-slate-700 hover:bg-slate-50;
+  }
+  .page-shell { @apply mx-auto w-full max-w-[1320px] px-4 py-7 sm:px-6 lg:px-8 lg:py-10; }
+  .page-eyebrow { @apply mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-brand; }
+  .page-title { @apply text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl; }
+  .page-lead { @apply mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600; }
+  .chip-active { @apply border-brand bg-brand text-white; }
+  .badge-label { @apply inline-flex items-center gap-1 rounded-md bg-paper px-2 py-1 text-[11px] font-semibold text-muted; }
+  .icon-button { @apply inline-flex size-10 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-brand hover:text-brand; }
+  .empty-state { @apply flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-slate-200 bg-white px-5 py-12 text-center text-sm text-muted; }
+  .subtle-link { @apply inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:underline; }
+  .section-title { @apply text-xl font-bold tracking-tight text-ink; }
+  .stat-value { @apply text-2xl font-bold tabular-nums text-brand; }
+  .form-grid { @apply grid gap-4 sm:grid-cols-2; }
+  .form-grid label { @apply flex min-w-0 flex-col gap-1.5 text-sm font-medium text-slate-700; }
+  .community-photo { @apply aspect-[16/9] w-full object-cover; }
+}
+html { scroll-behavior: smooth; }
+.explore-grid { display:grid;grid-template-columns:320px minmax(0,1fr);height:calc(100dvh - 270px);min-height:610px;max-height:900px;border:1px solid #d5ded5;border-radius:16px;overflow:hidden;background:white;position:relative; }
+.explore-sidebar { display:flex;flex-direction:column;min-height:0;border-right:1px solid #dce3db;background:white;z-index:500; }
+.explore-mobile-toggle { display:none; }
+.vn-marker-dot { display:flex;align-items:center;justify-content:center;width:29px;height:29px;color:white;border:2px solid white;border-radius:50%;box-shadow:0 2px 5px #25332d38; }
+.vn-marker-dot.selected { outline:3px solid #f2b544;outline-offset:2px;transform:scale(1.17); }
+@media(max-width:767px) {
+  .explore-grid { display:block;height:65dvh;min-height:470px; }
+  .explore-sidebar { position:absolute;inset:auto 0 0;height:92%;border:1px solid #dce3db;border-radius:18px 18px 0 0;transform:translateY(105%);visibility:hidden;transition:transform .2s;box-shadow:0 -4px 20px #25332d18;z-index:600; }
+  .explore-sidebar.is-open { transform:translateY(0);visibility:visible; }
+  .explore-mobile-toggle { display:inline-flex; }
+  .explore-legend { bottom:84px; }
+}
+img { max-width: 100%; }
+textarea { resize: vertical; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+.prose-travel { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.85; }
+.route-line { border-left: 2px solid #dce3db; margin-left: 12px; padding-left: 24px; }
+.route-stop { position: relative; }
+.route-stop::before { content: ''; position: absolute; left: -31px; top: 6px; width: 12px; height: 12px; border: 3px solid white; border-radius: 50%; background: #176b45; box-shadow: 0 0 0 1px #176b45; }
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar-track {
-  background: #F7FAFA;
-}
 ::-webkit-scrollbar-thumb {
-  background: #D5E3E3;
-  border-radius: 3px;
+  background: #cbd5e1;
+  border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #5CC0B4;
-}
-
-/* Tabular figures for data tables and metrics */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
-  font-family: 'JetBrains Mono', monospace;
 }
-
-/* Leaflet Custom Styling for Vietnam Travel Map */
 .leaflet-container {
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
-  background-color: #f2f6f6 !important;
+  font-family: var(--font-sans);
+  background: #eaf1f3;
 }
-
-/* Custom Province Tooltips */
+.leaflet-control-attribution {
+  font-size: 9px !important;
+}
+.leaflet-control-zoom {
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 1px 4px #0f172a12 !important;
+}
+.leaflet-control-zoom a {
+  color: #334155 !important;
+}
 .vn-province-tooltip {
-  background: rgba(255, 255, 255, 0.92) !important;
-  border: 1px solid #D5E3E3 !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 6px !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
-  color: #1F2D3D !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  padding: 3px 8px !important;
-  white-space: nowrap !important;
-  pointer-events: none !important;
-}
-
-.vn-province-tooltip::before {
-  display: none !important;
-}
-
-/* Hide minor province tooltips when zoomed out */
-.zoom-low .vn-minor-province {
-  display: none !important;
-}
-
-/* Custom Island Marker Styling */
-.vn-island-label {
-  background: transparent !important;
-  border: none !important;
+  color: #334155 !important;
+  font: 500 11px var(--font-sans);
   box-shadow: none !important;
 }
-
+.vn-island-label {
+  background: transparent;
+  border: none;
+}
 .vn-island-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1.5px solid #0F9D8F;
-  border-radius: 9999px;
-  padding: 2px 8px;
-  box-shadow: 0 2px 8px rgba(15, 157, 143, 0.2);
-  font-size: 10px;
-  font-weight: 700;
-  color: #0B5F57;
+  display: inline-block;
   white-space: nowrap;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
 }
-
-.vn-island-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 9999px;
-  background-color: #FF8A5B;
-  box-shadow: 0 0 0 2px rgba(255, 138, 91, 0.3);
-}
-
 .vn-sea-watermark {
-  font-size: 14px;
-  font-weight: 800;
+  color: #78969d;
   letter-spacing: 3px;
-  color: #0F9D8F;
-  opacity: 0.35;
-  text-transform: uppercase;
-  user-select: none;
-  pointer-events: none;
+  font-size: 12px;
   white-space: nowrap;
 }
-
-/* Leaflet Popups */
-.leaflet-popup-content-wrapper {
-  border-radius: 14px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
-  border: 1px solid #D5E3E3 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
-.leaflet-popup-content {
-  margin: 0 !important;
-  line-height: 1.4 !important;
-}
-
-.leaflet-popup-tip-container {
-  display: none !important;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
