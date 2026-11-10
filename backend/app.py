@@ -2,6 +2,7 @@
 
 import logging
 import os
+from ipaddress import ip_address
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -55,8 +56,22 @@ def create_app(database_url=None, config=None):
             return
         write = request.method not in ("GET", "HEAD", "OPTIONS")
         if write:
+            supplied_origin = request.headers.get("Origin")
+            local_same_origin = False
+            if not production and supplied_origin == request.host_url.rstrip("/"):
+                # Vite preserves Host when proxying requests from a LAN browser.
+                # Only trust literal local IPs (or localhost), never arbitrary hosts.
+                hostname = urlsplit(request.host_url).hostname
+                try:
+                    address = ip_address(hostname)
+                    local_same_origin = address.is_private and not (
+                        address.is_unspecified or address.is_multicast
+                    )
+                except ValueError:
+                    local_same_origin = hostname == "localhost"
             if (
-                request.headers.get("Origin") not in allowed
+                supplied_origin not in allowed
+                and not local_same_origin
                 or request.headers.get("Sec-Fetch-Site") == "cross-site"
             ):
                 raise HttpError(403, "Nguồn yêu cầu không được cho phép.")

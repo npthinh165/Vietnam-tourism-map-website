@@ -21,7 +21,6 @@ import {
   fetchVietnamGeoJSON,
 } from "../services/catalog";
 import { TravelImage, normalizeText } from "./platform/Shared";
-import { PROVINCE_SOURCE } from "../../shared/provinces";
 
 interface Props {
   locations?: LocationItem[];
@@ -767,20 +766,6 @@ export function VietnamMap({
           </button>
         </div>
       </div>
-      <p className="mt-3 text-[10px] leading-5 text-muted">
-        Danh mục 34 tỉnh/thành từ 01/07/2025 theo{" "}
-        <a
-          href={PROVINCE_SOURCE}
-          target="_blank"
-          rel="noreferrer"
-          className="underline"
-        >
-          Nghị quyết 202/2025/QH15
-        </a>
-        . Ranh giới minh họa được gộp từ dữ liệu bản đồ gốc. Nhãn quần đảo là vị
-        trí tham khảo; GeoJSON chưa bao phủ đầy đủ các đảo ngoài khơi. Điểm sao
-        chỉ tính từ đánh giá cộng đồng đã lưu.
-      </p>
     </section>
   );
 }

@@ -19,6 +19,59 @@ HEADERS = {"Origin": "http://localhost:3000"}
 PASSWORD = "a secure password 2026"
 
 
+@pytest.mark.parametrize(
+    "base_url,origin,site,status",
+    [
+        ("http://192.168.53.152:3000", "http://192.168.53.152:3000", None, 422),
+        ("http://127.0.0.1:4173", "http://127.0.0.1:4173", "same-origin", 422),
+        ("http://localhost:3000", "http://localhost:3000", "same-origin", 422),
+        ("http://192.168.53.152:3000", "http://192.168.53.153:3000", None, 403),
+        ("http://192.168.53.152:3000", "http://192.168.53.152:4000", None, 403),
+        ("http://192.168.53.152:3000", "http://192.168.53.152:3000", "cross-site", 403),
+        ("http://192.168.53.152:3000", None, None, 403),
+        ("http://evil.example", "http://evil.example", "same-origin", 403),
+    ],
+)
+def test_development_same_origin(client, base_url, origin, site, status):
+    headers = {}
+    if origin:
+        headers["Origin"] = origin
+    if site:
+        headers["Sec-Fetch-Site"] = site
+    response = client.post("/api/auth/signin", base_url=base_url, headers=headers, json={})
+    assert response.status_code == status
+
+
+def test_lan_signup_signout_signin(client):
+    base_url = "http://192.168.53.152:3000"
+    headers = {"Origin": base_url}
+    body = {"name": "LAN user", "email": "lan@example.com", "password": PASSWORD}
+    response = client.post("/api/auth/signup", base_url=base_url, headers=headers, json=body)
+    assert response.status_code == 201
+    token = response.json["csrfToken"]
+    assert (
+        client.post("/api/auth/signout", base_url=base_url, headers=headers, json={}).status_code
+        == 403
+    )
+    assert (
+        client.post(
+            "/api/auth/signout",
+            base_url=base_url,
+            headers={**headers, "X-CSRF-Token": token},
+            json={},
+        ).status_code
+        == 204
+    )
+    response = client.post(
+        "/api/auth/signin",
+        base_url=base_url,
+        headers=headers,
+        json={"email": body["email"], "password": PASSWORD},
+    )
+    assert response.status_code == 200
+    assert client.get("/api/auth/session", base_url=base_url).json["user"]["email"] == body["email"]
+
+
 def signup(client, email="test@example.com"):
     response = client.post(
         "/api/auth/signup",
@@ -300,6 +353,15 @@ def test_production_cookie_origin_headers_and_assets(database_url, tmp_path):
         client = app.test_client()
         body = {"name": "Production user", "email": "prod@example.com", "password": PASSWORD}
         assert client.post("/api/auth/signup", json=body, headers=HEADERS).status_code == 403
+        assert (
+            client.post(
+                "/api/auth/signup",
+                base_url="http://192.168.53.152:3000",
+                json=body,
+                headers={"Origin": "http://192.168.53.152:3000"},
+            ).status_code
+            == 403
+        )
         response = client.post(
             "/api/auth/signup", json=body, headers={"Origin": "https://travel.example"}
         )
