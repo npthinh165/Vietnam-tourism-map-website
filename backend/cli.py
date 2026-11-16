@@ -28,11 +28,16 @@ def local_database(memory=False):
         raise RuntimeError(
             "Cần Node.js để chạy database PGlite local hoặc cấu hình PostgreSQL qua DATABASE_URL."
         )
+    node_args = [node]
+    node_args.extend(["--import", "tsx", "tools/python-database.mjs"])
+    if memory:
+        node_args.append("--memory")
     child = subprocess.Popen(
-        [node, "--import", "tsx", "tools/python-database.mjs", *(["--memory"] if memory else [])],
+        node_args,
         cwd=ROOT,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
         text=True,
         encoding="utf-8",
         creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
@@ -43,7 +48,7 @@ def local_database(memory=False):
         for line in child.stdout:
             try:
                 payload = json.loads(line)
-                if "databaseUrl" in payload:
+                if isinstance(payload, dict) and "databaseUrl" in payload:
                     ready.put(payload["databaseUrl"])
             except (ValueError, TypeError):
                 print(line.rstrip(), flush=True)
@@ -146,6 +151,7 @@ def development(url, api_only, host, port):
                     "--strictPort",
                 ],
                 cwd=ROOT,
+                env={**os.environ, "PORT": str(server.server_port)},
                 creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
             )
         print(f"Travel Python API: http://{host}:{server.server_port}", flush=True)
