@@ -70,7 +70,14 @@ def local_database(memory=False):
             except (OSError, subprocess.TimeoutExpired):
                 child.terminate()
                 child.wait(timeout=10)
-        child.stdin.close()
+        # On Windows the child may have already exited (for example when
+        # Node fails during startup). Closing its inherited pipe can then
+        # raise ``[WinError 22] Invalid argument`` and hide the real startup
+        # error from callers and tests.
+        try:
+            child.stdin.close()
+        except OSError:
+            pass
         reader.join(timeout=2)
         child.stdout.close()
 
