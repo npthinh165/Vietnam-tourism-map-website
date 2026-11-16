@@ -4,3 +4,4 @@ psycopg-pool==3.3.3
 bcrypt==5.0.0
 python-dotenv==1.2.4
 waitress==3.0.2
+gunicorn==23.0.0

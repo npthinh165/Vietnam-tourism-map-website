@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: vietnam-travel-map-api
+    runtime: python
+    rootDir: .
+    buildCommand: pip install -r requirements.txt
+    preDeployCommand: python -m backend migrate && python -m backend seed
+    startCommand: gunicorn backend.wsgi:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_URL
+        value: https://vietnamtrablmap.pages.dev
+      - key: HOST
+        value: 0.0.0.0
+      - key: TRUST_PROXY_HOPS
+        value: "1"
+      - key: DATABASE_URL
+        sync: false
